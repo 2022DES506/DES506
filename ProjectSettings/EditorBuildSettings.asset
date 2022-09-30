@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Prototype_Circle.unity
     guid: 872981a82c8752e4294f42b2a02b12f9
+  - enabled: 1
+    path: Assets/Scenes/Main Menu.unity
+    guid: 764ce391127a9de4fa83f9a9ce59d659
+  - enabled: 1
+    path: Assets/Scenes/Harry Prototype.unity
+    guid: 7a2180cbeab97754fbf7c0e9988d857c
   m_configObjects: {}

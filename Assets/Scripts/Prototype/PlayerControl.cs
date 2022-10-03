@@ -19,7 +19,7 @@ public class PlayerControl : MonoBehaviour
 
     private bool isJumping;
 
-    private int curDirection; 
+    private int curDirection;
 
     private void Start()
     {
@@ -90,6 +90,12 @@ public class PlayerControl : MonoBehaviour
         {
             transform.position = new Vector2(-5, 0); 
         }
+
+        if (collision.collider.tag == "Spring")
+        {
+            GoHigherLayer(); 
+        }
+
     }
 
     private void GoHigherLayer()
@@ -112,6 +118,11 @@ public class PlayerControl : MonoBehaviour
         if (collision.collider.tag == "Ground")
         {
             isGround = false; 
+        }
+
+        if (collision.collider.tag == "Obstacle")
+        {
+            rb.velocity = new Vector2(curDirection * bounceValue, jumpForce); 
         }
     }
 }

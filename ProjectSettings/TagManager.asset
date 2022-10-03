@@ -9,6 +9,9 @@ TagManager:
   - Portal
   - Spring
   - Obstacle
+  - SpeedUp
+  - SlowDown
+  - Hollow
   layers:
   - Default
   - TransparentFX

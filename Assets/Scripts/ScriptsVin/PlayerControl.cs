@@ -14,14 +14,14 @@ public class PlayerControl : MonoBehaviour
     [SerializeField]
     private float defaultTimer;
     [SerializeField]
-    private float speedChangeTime, speedChangeRate;  
-
-    // [SerializeField] 累加变速
-    // private float speedChangeTimer, speedChangeValue; 
+    private float speedChangeTime, speedChangeRate;
+    [SerializeField]
+    private float superJumpHeight; 
 
     // 状态判断
     private bool isGround;
     private bool isJumping;
+    private bool isSuperJumping; 
 
     // 组件
     private Rigidbody2D rb;
@@ -32,18 +32,8 @@ public class PlayerControl : MonoBehaviour
     private int curDirection;
     private float curSpeed;
     private int curSpeedState; 
-    private float curTimer; 
-
-    /* 累加变速
-    private struct speedChange
-    {
-        public float curTimer;
-        public float curValue; 
-    }
-    private List<speedChange> sc;
-    private bool isSlowDown;
-    private float totalChangeValue; 
-    */
+    private float curTimer;
+    private float superJumpStart; 
 
     private void Start()
     {
@@ -55,13 +45,11 @@ public class PlayerControl : MonoBehaviour
         curSpeed = dashSpeed;
         curSpeedState = 0; 
 
-        // sc = new List<speedChange>(); // 累加变速
     }
 
     private void Update()
     {
         GetInput();
-        // SpeedChangeCheck(); // 累加变速
         SpeedCheck(); 
     }
 
@@ -109,34 +97,6 @@ public class PlayerControl : MonoBehaviour
         
     }
 
-    /* 累加变速
-    private void SpeedChangeCheck()
-    {
-        if (sc==null || sc.Count == 0) return; 
-
-        for (int i=0; i<sc.Count; i++)
-        {
-            if (sc[i].curTimer <= 0)
-            {
-                sc.RemoveAt(i); 
-            }
-        }
-
-        totalChangeValue = 0f; 
-        for (int i=0; i<sc.Count; i++)
-        {
-            totalChangeValue += sc[i].curValue; 
-        }
-
-        for (int i=0; i<sc.Count; i++)
-        {
-            speedChange tempSC = sc[i];
-            tempSC.curTimer -= Time.deltaTime;
-            sc[i] = tempSC; 
-        }
-    }
-    */
-
     private void GetInput()
     {
         if (Input.GetButtonDown("Jump"))
@@ -148,15 +108,27 @@ public class PlayerControl : MonoBehaviour
     private void FixedUpdate()
     {
         BasicDash();
-        Jump(); 
+        Jump();
+        SuperJump();
+    }
+
+    private void SuperJump()
+    {
+        if (isSuperJumping)
+        {
+            float jumpHeight = transform.position.y - superJumpStart; 
+            if (jumpHeight >= superJumpHeight)
+            {
+                rb.AddForce(Vector2.right * curDirection * 2, ForceMode2D.Impulse);
+                isSuperJumping = false; 
+            }
+        }
     }
 
     private void BasicDash()
     {
         if (isGround && !isJumping)
         {
-            // rb.velocity = new Vector2((dashSpeed + totalChangeValue)* curDirection, 0); 
-
             rb.velocity = new Vector2(curSpeed * curDirection, 0); 
         }
 
@@ -170,7 +142,6 @@ public class PlayerControl : MonoBehaviour
             anim.SetBool("isJump", true); 
         }
     }
-
 
     #region 碰撞和触发
     private void OnCollisionEnter2D(Collision2D collision)
@@ -220,8 +191,10 @@ public class PlayerControl : MonoBehaviour
     {
         if (collision.tag == "SpeedUp")
         {
+            GameManager.GM.curCoins++; 
+
             curSpeed = Mathf.Lerp(curSpeed, dashSpeedFast, speedChangeRate); 
-            curTimer = defaultTimer;
+            curTimer = defaultTimer; 
             curSpeedState = 1; 
 
             Destroy(collision.gameObject); 
@@ -230,47 +203,18 @@ public class PlayerControl : MonoBehaviour
         if (collision.tag == "SlowDown")
         {
             curSpeed = Mathf.Lerp(dashSpeedSlow, curSpeed, 1-speedChangeRate); 
-            curTimer = defaultTimer;
+            curTimer = defaultTimer; 
             curSpeedState = -1; 
         }
 
-        /* 累加变速
-        if (collision.tag == "SpeedUp")
-        {
-            speedChange newChange;
-            newChange.curTimer = speedChangeTimer;
-            newChange.curValue = speedChangeValue;
-            sc.Add(newChange);
-
-            Destroy(collision.gameObject); 
-        }
-
-        if (collision.tag == "SlowDown")
-        {
-            if (isSlowDown == false)
-            {
-                speedChange newChange;
-                newChange.curTimer = speedChangeTimer;
-                newChange.curValue = -speedChangeValue;
-                sc.Add(newChange); 
-
-                isSlowDown = true; 
-            }
-        }
-        */
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        /* 累加变速
-        if (collision.tag == "SlowDown")
-        {
-            isSlowDown = false; 
-        }
-        */
 
         if (collision.tag == "Hollow")
         {
+            GameManager.GM.curLevel--; 
             curDirection = -curDirection;
             sr.flipX = !sr.flipX; 
         }
@@ -285,12 +229,13 @@ public class PlayerControl : MonoBehaviour
         sr.flipX = !sr.flipX;
         rb.velocity = Vector2.zero; 
 
-        // 贴墙超级跳
+        // 超级跳
         isJumping = true;
+        isSuperJumping = true;
+        superJumpStart = transform.position.y;  
         Vector2 newForce = Vector2.up;
-        newForce.x = curDirection * bounceValue * 2;
         newForce.y = Vector2.up.y * jumpForce * greatJumpValue * 2;
-        rb.AddForce(newForce, ForceMode2D.Impulse);
+        rb.AddForce(newForce, ForceMode2D.Impulse); 
     }
 
 }

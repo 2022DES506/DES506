@@ -16,7 +16,9 @@ public class PlayerControl : MonoBehaviour
     [SerializeField]
     private float speedChangeTime, speedChangeRate;
     [SerializeField]
-    private float superJumpHeight; 
+    private float superJumpHeight;
+    [SerializeField]
+    private ParticleSystem dustVFX; 
 
     // ×´Ì¬ÅÐ¶Ï
     private bool isGround;
@@ -120,7 +122,9 @@ public class PlayerControl : MonoBehaviour
             if (jumpHeight >= superJumpHeight)
             {
                 rb.AddForce(Vector2.right * curDirection * 2, ForceMode2D.Impulse);
-                isSuperJumping = false; 
+                isSuperJumping = false;
+
+                dustVFX.Play(); 
             }
         }
     }
@@ -139,7 +143,8 @@ public class PlayerControl : MonoBehaviour
         if (isJumping && isGround)
         {
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse); 
-            anim.SetBool("isJump", true); 
+            anim.SetBool("isJump", true);
+            dustVFX.Play(); 
         }
     }
 
@@ -149,7 +154,9 @@ public class PlayerControl : MonoBehaviour
         if (collision.collider.tag == "Ground")
         {
             isGround = true;
-            isJumping = false; 
+            isJumping = false;
+
+            dustVFX.Play(); 
 
             if (anim.GetBool("isJump"))
             {

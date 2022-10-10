@@ -354,6 +354,7 @@ GameObject:
   - component: {fileID: 68263160}
   - component: {fileID: 68263159}
   - component: {fileID: 68263161}
+  - component: {fileID: 68263162}
   m_Layer: 5
   m_Name: CoinNumber
   m_TagString: Untagged
@@ -434,6 +435,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b83d5fda85918fd4e986d0aa71e514b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &68263162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68263157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 2, y: -2}
+  m_UseGraphicAlpha: 1
 --- !u!1001 &80000747
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3445,7 +3461,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &629102781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18227,6 +18243,7 @@ GameObject:
   - component: {fileID: 1435396484}
   - component: {fileID: 1435396486}
   - component: {fileID: 1435396485}
+  - component: {fileID: 1435396487}
   m_Layer: 5
   m_Name: CoinText
   m_TagString: Untagged
@@ -18295,6 +18312,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1435396483}
   m_CullTransparentMesh: 1
+--- !u!114 &1435396487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1435396483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 2, y: -2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1463579734
 GameObject:
   m_ObjectHideFlags: 0

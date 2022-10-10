@@ -171,7 +171,8 @@ public class PlayerControl : MonoBehaviour
 
         if (collision.collider.tag == "Portal")
         {
-            transform.position = new Vector2(-5, 0); 
+            transform.position = new Vector2(-5, 0);
+            GameManager.GM.curLap++; 
         }
 
         if (collision.collider.tag == "Spring")

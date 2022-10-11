@@ -150,8 +150,10 @@ public class PlayerControl : MonoBehaviour
         if (isGround && Input.GetButtonDown("Jump"))
         {
             rb.velocity += Vector2.up * jumpForce; 
+
             anim.SetBool("isJump", true);
-            dustVFX.Play(); 
+            dustVFX.Play();
+            SoundManager.SM.PlayJump(); 
         }
         jumpHold = Input.GetButton("Jump"); 
     }

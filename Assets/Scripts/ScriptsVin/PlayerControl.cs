@@ -18,12 +18,14 @@ public class PlayerControl : MonoBehaviour
     [SerializeField]
     private float superJumpHeight;
     [SerializeField]
-    private ParticleSystem dustVFX; 
+    private ParticleSystem dustVFX;
+    [SerializeField]
+    private float fallAddition, jumpAddition; // 重力加成
 
     // 状态判断
     private bool isGround;
-    private bool isJumping;
-    private bool isSuperJumping; 
+    private bool isSuperJumping;
+    private bool jumpHold; 
 
     // 组件
     private Rigidbody2D rb;
@@ -51,7 +53,7 @@ public class PlayerControl : MonoBehaviour
 
     private void Update()
     {
-        GetInput();
+        Jump(); 
         SpeedCheck(); 
     }
 
@@ -99,19 +101,24 @@ public class PlayerControl : MonoBehaviour
         
     }
 
-    private void GetInput()
-    {
-        if (Input.GetButtonDown("Jump"))
-        {
-            isJumping = true; 
-        }
-    }
 
     private void FixedUpdate()
     {
         BasicDash();
-        Jump();
         SuperJump();
+        JumpOptimization(); 
+    }
+
+    private void JumpOptimization()
+    {
+        if (rb.velocity.y < 0)
+        {
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallAddition - 1) * Time.fixedDeltaTime;
+        }
+        else if (rb.velocity.y > 0 && !jumpHold) 
+        {
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (jumpAddition - 1) * Time.fixedDeltaTime; 
+        }
     }
 
     private void SuperJump()
@@ -131,21 +138,24 @@ public class PlayerControl : MonoBehaviour
 
     private void BasicDash()
     {
-        if (isGround && !isJumping)
+        if (isGround) 
         {
-            rb.velocity = new Vector2(curSpeed * curDirection, 0); 
+            rb.velocity = new Vector2(curSpeed * curDirection * Time.fixedDeltaTime, rb.velocity.y);  
         }
 
     }
 
     private void Jump()
     {
-        if (isJumping && isGround)
+        if (isGround && Input.GetButtonDown("Jump"))
         {
-            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse); 
+            rb.velocity += Vector2.up * jumpForce; 
+
             anim.SetBool("isJump", true);
-            dustVFX.Play(); 
+            dustVFX.Play();
+            SoundManager.SM.PlayJump(); 
         }
+        jumpHold = Input.GetButton("Jump"); 
     }
 
     #region 碰撞和触发
@@ -154,7 +164,6 @@ public class PlayerControl : MonoBehaviour
         if (collision.collider.tag == "Ground")
         {
             isGround = true;
-            isJumping = false;
 
             dustVFX.Play(); 
 
@@ -238,7 +247,6 @@ public class PlayerControl : MonoBehaviour
         rb.velocity = Vector2.zero; 
 
         // 超级跳
-        isJumping = true;
         isSuperJumping = true;
         superJumpStart = transform.position.y;  
         Vector2 newForce = Vector2.up;

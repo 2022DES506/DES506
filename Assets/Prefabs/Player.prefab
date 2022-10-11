@@ -4926,7 +4926,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 2
+  m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: a53014777b5e8144db03ed36efe0d7a6, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -4944,10 +4944,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1315af7b27672734a9b0cab8edb53fbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dashSpeed: 5
-  dashSpeedFast: 10
-  dashSpeedSlow: 1
-  jumpForce: 5
+  dashSpeed: 300
+  dashSpeedFast: 600
+  dashSpeedSlow: 100
+  jumpForce: 8
   bounceValue: 3
   greatJumpValue: 2
   defaultTimer: 4
@@ -4955,6 +4955,8 @@ MonoBehaviour:
   speedChangeRate: 0.01
   superJumpHeight: 5
   dustVFX: {fileID: 92897003154328056}
+  fallAddition: 3.5
+  jumpAddition: 1.5
 --- !u!70 &92897004215128015
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

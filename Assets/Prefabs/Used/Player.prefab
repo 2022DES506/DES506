@@ -4948,8 +4948,8 @@ MonoBehaviour:
   dashSpeedFast: 600
   dashSpeedSlow: 100
   jumpForce: 8
-  bounceValue: 3
-  greatJumpValue: 2
+  bounceValue: 1.5
+  greatJumpValue: 1.2
   defaultTimer: 4
   speedChangeTime: 2
   speedChangeRate: 0.01

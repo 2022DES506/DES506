@@ -4944,19 +4944,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1315af7b27672734a9b0cab8edb53fbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dashSpeed: 300
+  dashSpeed: 400
   dashSpeedFast: 600
-  dashSpeedSlow: 100
+  dashSpeedSlow: 200
   jumpForce: 8
-  bounceValue: 1.5
-  greatJumpValue: 1.2
-  defaultTimer: 4
-  speedChangeTime: 2
+  superJumpForce: 20
+  speedChangeCD: 2
   speedChangeRate: 0.01
-  superJumpHeight: 5
-  dustVFX: {fileID: 92897003154328056}
+  superJumpHeight: 8
+  superJumpLength: 3
+  superJumpSpeed: 800
   fallAddition: 3.5
   jumpAddition: 1.5
+  dustVFX: {fileID: 92897003154328056}
 --- !u!70 &92897004215128015
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

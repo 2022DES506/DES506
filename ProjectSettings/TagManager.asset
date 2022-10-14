@@ -12,6 +12,7 @@ TagManager:
   - SpeedUp
   - SlowDown
   - Hollow
+  - Trampoline
   layers:
   - Default
   - TransparentFX

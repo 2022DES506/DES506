@@ -4,28 +4,22 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Ground
-  - Wall
-  - Portal
   - Spring
-  - Obstacle
   - SpeedUp
   - SlowDown
-  - Hollow
-  - Trampoline
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Down
+  - Level1
+  - Level2
+  - Level3
+  - Level4
+  - Up
   - 
   - 
   - 

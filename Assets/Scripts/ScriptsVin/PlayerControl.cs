@@ -20,16 +20,23 @@ public class PlayerControl : MonoBehaviour
     private float superJumpLength; // 超级跳后半段冲刺距离
     [SerializeField]
     private float superJumpSpeed;  // 超级跳后半段冲刺速度
-    
     [SerializeField]
     private float fallAddition, jumpAddition; // 落地和起跳的重力加成
+    [SerializeField]
+    private float levelStart, levelHeight; // 最底层高度和每层高度
 
     // 组件
-    private Rigidbody2D rb;              // 刚体
-    private SpriteRenderer sr;           // 精灵渲染器
-    private Animator anim;               // 动画控制器
+    private Rigidbody2D rb;                // 刚体
+    private SpriteRenderer sr;             // 精灵渲染器
+    private Animator anim;                 // 动画控制器
     [SerializeField]
-    private ParticleSystem dustVFX; // 脚底尘埃粒子特效 
+    private ParticleSystem dustVFX;   // 脚底尘埃粒子特效 
+    [SerializeField]
+    private Transform groundCheck;  // 地面检测点
+    [SerializeField]
+    private LayerMask groundLayer;  // 地面Layer
+    [SerializeField]
+    private LayerMask layerDown, layerLevel1, layerLevel2, layerLevel3, layerLevel4, layerUp; // 层级Layer
 
     // 当前状态变量
     private bool isGround;                      // 是否在地面上  
@@ -59,13 +66,66 @@ public class PlayerControl : MonoBehaviour
 
     private void Update()
     {
-        Jump();             // 跳跃     
-        SpeedCheck();  // 速度的线性变化
+        LevelCheck();     // 计算当前层数
+        FlipMe();            // 翻转检测
+        GroundCheck(); // 地面检测
+        Jump();              // 跳跃     
+        SpeedCheck();   // 速度的线性变化
     }
 
+    private void LevelCheck()
+    {
+        // 根据碰撞层确定层数
+        if (Physics2D.OverlapCircle(transform.position, 0.1f, layerDown))
+        {
+            GameManager.GM.curLevel = 0; 
+        }
+        if (Physics2D.OverlapCircle(transform.position, 0.1f, layerLevel1))
+        {
+            GameManager.GM.curLevel = 1;
+        }
+        if (Physics2D.OverlapCircle(transform.position, 0.1f, layerLevel2))
+        {
+            GameManager.GM.curLevel = 2;
+        }
+        if (Physics2D.OverlapCircle(transform.position, 0.1f, layerLevel3))
+        {
+            GameManager.GM.curLevel = 3;
+        }
+        if (Physics2D.OverlapCircle(transform.position, 0.1f, layerLevel4))
+        {
+            GameManager.GM.curLevel = 4;
+        }
+        if (Physics2D.OverlapCircle(transform.position, 0.1f, layerUp))
+        {
+            GameManager.GM.curLevel = 5; 
+        }
+
+        /* 高度法，启用
+        
+        if (transform.position.y <= levelStart)
+        {
+            GameManager.GM.curLevel = 0; 
+        }
+        else if (transform.position.y >= levelStart + levelHeight * 4)
+        {
+            GameManager.GM.curLevel = 5; 
+        }
+        else
+        {
+            GameManager.GM.curLevel = (int)((transform.position.y - levelStart) / levelHeight) + 1;
+        }
+
+        */
+    }
+    private void GroundCheck()
+    {
+        isGround = Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);  
+    }
     private void Jump()
     {
-        if (isGround && Input.GetButtonDown("Jump"))
+        // if (isGround && Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump")) // 测试用，连跳
         {
             // 在地面上按下跳跃一瞬间
             rb.velocity += Vector2.up * jumpForce; // 起跳速度
@@ -135,11 +195,7 @@ public class PlayerControl : MonoBehaviour
 
     private void BasicDash()
     {
-        if (isGround)
-        {
-            rb.velocity = new Vector2(curSpeed * curDirection * Time.fixedDeltaTime, rb.velocity.y);
-        }
-
+        rb.velocity = new Vector2(curSpeed * curDirection * Time.fixedDeltaTime, rb.velocity.y);
     }
     private void SuperJump()
     {
@@ -155,7 +211,6 @@ public class PlayerControl : MonoBehaviour
                     superJumpStart = transform.position.x; // 记录冲刺起点
                     rb.velocity = new Vector2(superJumpSpeed * curDirection * Time.fixedDeltaTime, 0); // 开始冲刺
                     superJumpingState = 2; // 更新超级跳状态
-                    FlipMe(); // 翻转自身方向
 
                     dustVFX.Play(); // 播放脚底尘埃特效
                 }
@@ -170,7 +225,6 @@ public class PlayerControl : MonoBehaviour
                     rb.gravityScale = 1f; // 恢复刚体重力
                     rb.velocity = new Vector2(curSpeed * curDirection * Time.fixedDeltaTime, rb.velocity.y); // 速度恢复
                     superJumpingState = 0; // 重置超级跳状态
-                    GotHigherLayer(); 
                 }
                 break;
             default:
@@ -190,16 +244,32 @@ public class PlayerControl : MonoBehaviour
             rb.velocity += Vector2.up * Physics2D.gravity.y * (jumpAddition - 1) * Time.fixedDeltaTime; 
         }
     }
-    // 到达更高层
-    private void GotHigherLayer()
-    {
-        GameManager.GM.curLevel++;
-    }
+
     // 翻转角色朝向
     private void FlipMe()
     {
-        curDirection = -curDirection;
-        sr.flipX = !sr.flipX; 
+        var _flipValue = GameManager.GM.curLevel % 2; 
+        switch (_flipValue) 
+        {
+            case 0: 
+                FlipMeToRight(); 
+                break; 
+            case 1: 
+                FlipMeToLeft(); 
+                break; 
+            default: 
+                break; 
+        }
+    }
+    private void FlipMeToRight()
+    {
+        curDirection = 1;
+        sr.flipX = false; 
+    }
+    private void FlipMeToLeft()
+    {
+        curDirection = -1;
+        sr.flipX = true; 
     }
 
     #region 碰撞和触发

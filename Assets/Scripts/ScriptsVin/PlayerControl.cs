@@ -37,6 +37,7 @@ public class PlayerControl : MonoBehaviour
     private LayerMask groundLayer;  // 地面Layer
     [SerializeField]
     private LayerMask layerDown, layerLevel1, layerLevel2, layerLevel3, layerLevel4, layerUp; // 层级Layer
+    private Animator curSpringAni; 
 
     // 当前状态变量
     private bool isGround;                      // 是否在地面上  
@@ -290,6 +291,7 @@ public class PlayerControl : MonoBehaviour
 
         if (collision.collider.tag == "Spring")
         {
+            curSpringAni = collision.collider.gameObject.GetComponent<Animator>(); 
             StartSuperJump(); 
         }
 
@@ -338,7 +340,9 @@ public class PlayerControl : MonoBehaviour
     {
         superJumpingState = 1;
         superJumpStart = transform.position.y;
-        rb.velocity = Vector2.up * superJumpForce; 
+        rb.velocity = Vector2.up * superJumpForce;
+
+        curSpringAni.SetBool("isSpring", true); 
     }
 
 }

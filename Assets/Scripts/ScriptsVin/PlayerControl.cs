@@ -328,6 +328,12 @@ public class PlayerControl : MonoBehaviour
             curSpeedState = -1; 
         }
 
+        // 圈数记录
+        if (collision.tag == "LapCheck")
+        {
+            GameManager.GM.curLap++; 
+        }
+
     }
     // 脱离触发体
     private void OnTriggerExit2D(Collider2D collision)

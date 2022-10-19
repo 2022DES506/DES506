@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        curLap = 1; 
+        curLap = 0; 
         curLevel = 0;
         curCoins = 0;
         curTimer = defaultTimer * 60; // 浮点数秒来计算时间

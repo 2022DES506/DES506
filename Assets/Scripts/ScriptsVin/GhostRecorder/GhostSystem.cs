@@ -5,15 +5,37 @@ using UnityEngine;
 
 public class GhostSystem : MonoBehaviour
 {
+
     private GhostRecorder[] recorders;
     private GhostActor[] ghostActors;
 
     public float recordDuration = 10;
 
+
     private void Start()
     {
         recorders = FindObjectsOfType<GhostRecorder>();
         ghostActors = FindObjectsOfType<GhostActor>();
+
+        StartRecording(); 
+    }
+
+    private void Update()
+    {
+        SpawnGhost();
+    }
+
+    private void SpawnGhost()
+    {
+        if (GameManager.GM.curLap == 2)
+        {
+            StopRecording();
+            StartReplay(); 
+        }
+        if (GameManager.GM.curLap == 3)
+        {
+            StopReplay(); 
+        }
     }
 
     public void StartRecording()
@@ -43,10 +65,12 @@ public class GhostSystem : MonoBehaviour
             ghostActors[i].StartReplay();
         }
 
+        /* 关闭留影者的渲染 
         for (int i = 0; i < recorders.Length; i++)
         {
             recorders[i].GetComponent<Renderer>().enabled = false;
         }
+        */
 
         OnReplayStart();
     }

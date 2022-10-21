@@ -303,7 +303,7 @@ MonoBehaviour:
           m_MethodName: PlayOneShot
           m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 8300000, guid: 7022acc8e445d2f488d94d394ab42eba, type: 3}
+            m_ObjectArgument: {fileID: 8300000, guid: 5b1be0373c0f84b419785184e1b09633, type: 3}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
@@ -1349,7 +1349,7 @@ MonoBehaviour:
           m_MethodName: PlayOneShot
           m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 8300000, guid: 7022acc8e445d2f488d94d394ab42eba, type: 3}
+            m_ObjectArgument: {fileID: 8300000, guid: 5b1be0373c0f84b419785184e1b09633, type: 3}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
@@ -1528,7 +1528,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: dbd3d02588362164891ba09a9bee7cef, type: 3}
+  m_audioClip: {fileID: 8300000, guid: ed3030e2d7dbde746b1a05d06489b29a, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -1808,7 +1808,7 @@ MonoBehaviour:
           m_MethodName: PlayOneShot
           m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 8300000, guid: 7022acc8e445d2f488d94d394ab42eba, type: 3}
+            m_ObjectArgument: {fileID: 8300000, guid: 5b1be0373c0f84b419785184e1b09633, type: 3}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
@@ -2595,7 +2595,7 @@ MonoBehaviour:
           m_MethodName: PlayOneShot
           m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 8300000, guid: 7022acc8e445d2f488d94d394ab42eba, type: 3}
+            m_ObjectArgument: {fileID: 8300000, guid: 5b1be0373c0f84b419785184e1b09633, type: 3}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0

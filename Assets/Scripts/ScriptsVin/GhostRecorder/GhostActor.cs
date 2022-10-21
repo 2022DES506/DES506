@@ -49,11 +49,9 @@ public class GhostActor : MonoBehaviour
 
     public void StartReplay()
     {
-        if (frames.Count == 0)
-        {
-            SetFrames(recorder.GetFrames());
-            recorder.ClearFrames(); 
-        }
+        Debug.Log("幽灵成功获取录像帧序列！");
+        SetFrames(recorder.GetFrames());
+        recorder.ClearFrames();
 
         if (!IsReplaying())
         {
@@ -122,7 +120,7 @@ public class GhostActor : MonoBehaviour
 
     public void SetFrames(List<GhostShot> frames)
     {
-        Debug.Log(frames.Count); 
+        Debug.Log(frames.Count);
         foreach (var frame in frames)
         {
             this.frames.Add(frame); 

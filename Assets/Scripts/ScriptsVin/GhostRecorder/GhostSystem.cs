@@ -7,15 +7,20 @@ public class GhostSystem : MonoBehaviour
 {
     
     private GhostRecorder[] recorders;
+    [SerializeField]
     private GhostActor[] ghostActors;
 
-    private bool tempFrameLock; // 保证代码只执行一次 
+    [SerializeField]
+    private bool tempFrameLock;  // 保证代码只执行一次 
+    [SerializeField]
+    private bool tempRecordLock; // 保证代码按序执行
 
     private void Start()
     {
         recorders = FindObjectsOfType<GhostRecorder>();
         StartRecording();
-        tempFrameLock = false; 
+        tempFrameLock = false;
+        tempRecordLock = true; 
     }
 
     private void Update()
@@ -30,28 +35,37 @@ public class GhostSystem : MonoBehaviour
         {
             if (tempFrameLock == false)
             {
-                StopRecording();
-                StartReplay();
-                StartRecording();
-                tempFrameLock = true; 
+                if (tempRecordLock == true && recorders[0].IsRecording())
+                {
+                    Debug.Log("成功停止录制！");
+                    StopRecording();
+                    tempRecordLock = false; 
+                }
+                if (tempRecordLock == false && !recorders[0].IsRecording() && ghostActors.Length != 0)
+                {
+                    Debug.Log("成功开始回放！");
+                    StartReplay();
+                    StartRecording();
+                    tempRecordLock = true; 
+                    tempFrameLock = true;
+                }
             }
         }
         if (GameManager.GM.curLap == 3)
         {
             if (tempFrameLock == true)
             {
-                StopReplay(); 
-                StopRecording();
-                StartReplay();
-                tempFrameLock = false; 
-            }
-        }
-        if (GameManager.GM.curLap == 4)
-        {
-            if (tempFrameLock == false)
-            {
-                StopRecording(); 
-                tempFrameLock = true; 
+                if (tempRecordLock == true)
+                {
+                    StopRecording();
+                    tempRecordLock = false; 
+                }
+                if (tempRecordLock == false && ghostActors.Length > 1)
+                {
+                    StartReplay();
+                    tempRecordLock = true; 
+                    tempFrameLock = false;
+                }
             }
         }
     }

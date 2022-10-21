@@ -40,6 +40,7 @@ public class PlayerControl : MonoBehaviour
     [SerializeField]
     private LayerMask layerDown, layerLevel1, layerLevel2, layerLevel3, layerLevel4, layerUp; // 层级Layer
     private Animator curSpringAni;
+    [SerializeField]
     private GhostRecorder gr;            // 幽灵留影机
 
     // 当前状态变量
@@ -75,7 +76,7 @@ public class PlayerControl : MonoBehaviour
     private void Update()
     {
         if (!playerControl) return; 
-
+         
         LapCheck();       // 不同圈数生成幽灵
         LevelCheck();     // 计算当前层数
         FlipMe();            // 翻转检测
@@ -102,7 +103,8 @@ public class PlayerControl : MonoBehaviour
                     canSpawn = false; 
                     break;
                 case 4:
-                    playerControl = false; 
+                    playerControl = false;
+                    rb.velocity = Vector2.zero; 
                     break;
                 default:
                     break;
@@ -224,6 +226,8 @@ public class PlayerControl : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!playerControl) return; 
+
         BasicDash();               // 正常冲刺的速度控制
         SuperJump();             // 超级跳触发后的速度控制
         JumpOptimization(); // 起跳与落地的速度微调

@@ -9,10 +9,13 @@ public class GhostSystem : MonoBehaviour
     private GhostRecorder[] recorders;
     private GhostActor[] ghostActors;
 
+    private bool tempFrameLock; // 保证代码只执行一次 
+
     private void Start()
     {
         recorders = FindObjectsOfType<GhostRecorder>();
-        StartRecording(); 
+        StartRecording();
+        tempFrameLock = false; 
     }
 
     private void Update()
@@ -25,38 +28,30 @@ public class GhostSystem : MonoBehaviour
         ghostActors = FindObjectsOfType<GhostActor>(); 
         if (GameManager.GM.curLap == 2)
         {
-            if (GameManager.GM.canStopRecording) 
+            if (tempFrameLock == false)
             {
-                // 录制了几帧后可以停止录制
                 StopRecording();
-            }
-            if (!GameManager.GM.canStopRecording && GameManager.GM.canStartReplay)
-            {
-                // 幽灵生成后可以开始回放
                 StartReplay();
-            }
-            if (!GameManager.GM.canStopRecording && !GameManager.GM.canStartReplay && GameManager.GM.canStartRecording)
-            {
-                // 录制交给幽灵，清空录影机存储帧后可以开始录制
                 StartRecording();
+                tempFrameLock = true; 
             }
         }
         if (GameManager.GM.curLap == 3)
         {
-            if (GameManager.GM.canStopRecording)
+            if (tempFrameLock == true)
             {
+                StopReplay(); 
                 StopRecording();
-            }
-            if (GameManager.GM.canStartReplay)
-            {
                 StartReplay();
+                tempFrameLock = false; 
             }
         }
         if (GameManager.GM.curLap == 4)
         {
-            if (GameManager.GM.canStopReplay)
+            if (tempFrameLock == false)
             {
-                StopReplay();
+                StopRecording(); 
+                tempFrameLock = true; 
             }
         }
     }

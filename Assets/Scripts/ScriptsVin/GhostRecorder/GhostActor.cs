@@ -53,7 +53,6 @@ public class GhostActor : MonoBehaviour
         {
             SetFrames(recorder.GetFrames());
             recorder.ClearFrames(); 
-            GameManager.GM.canStartRecording = true;
         }
 
         if (!IsReplaying())
@@ -67,8 +66,6 @@ public class GhostActor : MonoBehaviour
             render.enabled = true; // ¥Úø™”ƒ¡È‰÷»æ
 
             isReplaying = true;
-
-            GameManager.GM.canStartReplay = false;
 
             OnReplayStart();
 
@@ -85,8 +82,6 @@ public class GhostActor : MonoBehaviour
 
             render.enabled = false;
             isReplaying = false;
-
-            GameManager.GM.canStopReplay = false;
 
             OnReplayEnd();
 
@@ -107,7 +102,6 @@ public class GhostActor : MonoBehaviour
                     render.flipX = frame.dirMark;
                     replayTime = frame.timeMark; 
                     replayIndex++;
-                    GameManager.GM.canStopReplay = true; 
                 }
                 else
                 {

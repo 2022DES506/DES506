@@ -52,8 +52,6 @@ public class GhostRecorder : MonoBehaviour
 
             isRecording = true;
 
-            GameManager.GM.canStartRecording = false;
-
             OnRecordingStart();
 
             Debug.LogFormat("Recording of {0} started", gameObject.name);
@@ -68,8 +66,6 @@ public class GhostRecorder : MonoBehaviour
 
             isRecording = false;
 
-            GameManager.GM.canStopRecording = false;
-
             OnRecordingEnd();
 
             Debug.LogFormat("Recording of {0} ended at frame {1}", gameObject.name, recordIndex);
@@ -83,8 +79,6 @@ public class GhostRecorder : MonoBehaviour
         if (IsRecording())
         {
             RecordFrame();
-
-            GameManager.GM.canStopRecording = true; 
         }
     }
 

@@ -52,6 +52,7 @@ public class PlayerControl : MonoBehaviour
     private float superJumpStart;            // 超级跳起跳高度、冲刺起点【复用】 
     private int superJumpingState;         // 超级跳状态：0为非超级跳，1为超级跳起跳，2为超级跳冲刺 
     private bool canSpawn;                     // 是否允许生成幽灵
+    private bool playerControl; 
 
     private void Start()
     {
@@ -67,11 +68,14 @@ public class PlayerControl : MonoBehaviour
         curSpeed = dashSpeed; 
         curSpeedState = 0;
         superJumpingState = 0;
-        canSpawn = false; 
+        canSpawn = false;
+        playerControl = true; 
     }
 
     private void Update()
     {
+        if (!playerControl) return; 
+
         LapCheck();       // 不同圈数生成幽灵
         LevelCheck();     // 计算当前层数
         FlipMe();            // 翻转检测
@@ -90,14 +94,15 @@ public class PlayerControl : MonoBehaviour
                 case 2:
                     _ghost = Instantiate(ghostPrefab, transform.position, Quaternion.identity);
                     _ghost.GetComponent<GhostActor>().recorder = gr;
-                    GameManager.GM.canStartReplay = true; 
                     canSpawn = false; 
                     break;
                 case 3:
                     _ghost = Instantiate(ghostPrefab, transform.position, Quaternion.identity);
                     _ghost.GetComponent<GhostActor>().recorder = gr;
-                    GameManager.GM.canStartReplay = true; 
                     canSpawn = false; 
+                    break;
+                case 4:
+                    playerControl = false; 
                     break;
                 default:
                     break;

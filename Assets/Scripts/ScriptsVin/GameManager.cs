@@ -15,7 +15,9 @@ public class GameManager : MonoBehaviour
     public int curLap; 
     public int curLevel;
     public int curCoins;
-    public float curTimer; 
+    public float curTimer;
+
+    public bool canStartRecording, canStopRecording, canStartReplay, canStopReplay; 
 
     private void OnEnable()
     {
@@ -32,6 +34,11 @@ public class GameManager : MonoBehaviour
         curLevel = 0;
         curCoins = 0;
         curTimer = defaultTimer * 60; // 浮点数秒来计算时间
+
+        canStartRecording = true;
+        canStopRecording = false;
+        canStartReplay = false;
+        canStopReplay = false; 
     }
 
 }

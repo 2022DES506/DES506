@@ -5,18 +5,13 @@ using UnityEngine;
 
 public class GhostSystem : MonoBehaviour
 {
-
+    
     private GhostRecorder[] recorders;
     private GhostActor[] ghostActors;
-
-    public float recordDuration = 10;
-
 
     private void Start()
     {
         recorders = FindObjectsOfType<GhostRecorder>();
-        ghostActors = FindObjectsOfType<GhostActor>();
-
         StartRecording(); 
     }
 
@@ -27,14 +22,42 @@ public class GhostSystem : MonoBehaviour
 
     private void SpawnGhost()
     {
+        ghostActors = FindObjectsOfType<GhostActor>(); 
         if (GameManager.GM.curLap == 2)
         {
-            StopRecording();
-            StartReplay(); 
+            if (GameManager.GM.canStopRecording) 
+            {
+                // 录制了几帧后可以停止录制
+                StopRecording();
+            }
+            if (!GameManager.GM.canStopRecording && GameManager.GM.canStartReplay)
+            {
+                // 幽灵生成后可以开始回放
+                StartReplay();
+            }
+            if (!GameManager.GM.canStopRecording && !GameManager.GM.canStartReplay && GameManager.GM.canStartRecording)
+            {
+                // 录制交给幽灵，清空录影机存储帧后可以开始录制
+                StartRecording();
+            }
         }
         if (GameManager.GM.curLap == 3)
         {
-            StopReplay(); 
+            if (GameManager.GM.canStopRecording)
+            {
+                StopRecording();
+            }
+            if (GameManager.GM.canStartReplay)
+            {
+                StartReplay();
+            }
+        }
+        if (GameManager.GM.curLap == 4)
+        {
+            if (GameManager.GM.canStopReplay)
+            {
+                StopReplay();
+            }
         }
     }
 
@@ -42,7 +65,7 @@ public class GhostSystem : MonoBehaviour
     {
         for (int i = 0; i < recorders.Length; i++)
         {
-            recorders[i].StartRecording(recordDuration);
+            recorders[i].StartRecording();
         }
 
         OnRecordingStart();
@@ -65,13 +88,6 @@ public class GhostSystem : MonoBehaviour
             ghostActors[i].StartReplay();
         }
 
-        /* 关闭留影者的渲染 
-        for (int i = 0; i < recorders.Length; i++)
-        {
-            recorders[i].GetComponent<Renderer>().enabled = false;
-        }
-        */
-
         OnReplayStart();
     }
 
@@ -80,11 +96,6 @@ public class GhostSystem : MonoBehaviour
         for (int i = 0; i < ghostActors.Length; i++)
         {
             ghostActors[i].StopReplay();
-        }
-
-        for (int i = 0; i < recorders.Length; i++)
-        {
-            recorders[i].GetComponent<Renderer>().enabled = true;
         }
 
         OnReplayEnd();

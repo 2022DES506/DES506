@@ -7,14 +7,13 @@ public class GhostActor : MonoBehaviour
 {
     public GhostRecorder recorder;     
 
-    public float replayTimescale = 1; // 回放速度
-
-    private GhostShot[] frames;
+    [SerializeField] 
+    private List<GhostShot> frames; 
 
     private bool isReplaying;
 
     private int replayIndex = 0;
-    private float replayTime = 0.0f;            // in milliseconds
+    private float replayTime = 0.0f;          
 
     private SpriteRenderer render;
 
@@ -50,7 +49,12 @@ public class GhostActor : MonoBehaviour
 
     public void StartReplay()
     {
-        SetFrames(recorder.GetFrames());
+        if (frames.Count == 0)
+        {
+            SetFrames(recorder.GetFrames());
+            recorder.ClearFrames(); 
+            GameManager.GM.canStartRecording = true;
+        }
 
         if (!IsReplaying())
         {
@@ -64,7 +68,10 @@ public class GhostActor : MonoBehaviour
 
             isReplaying = true;
 
+            GameManager.GM.canStartReplay = false;
+
             OnReplayStart();
+
         }
     }
 
@@ -79,36 +86,28 @@ public class GhostActor : MonoBehaviour
             render.enabled = false;
             isReplaying = false;
 
+            GameManager.GM.canStopReplay = false;
+
             OnReplayEnd();
+
         }
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (IsReplaying())
         {
-            if (replayIndex < frames.Length)
+            if (replayIndex < frames.Count)
             {
                 GhostShot frame = frames[replayIndex];
 
                 if (!frame.isFinal)
                 {
-                    if (replayTime < frame.timeMark)
-                    {
-                        if (replayIndex == 0)
-                        {
-                            replayTime = frame.timeMark;
-                        }
-                        else
-                        {
-                            DoLerp(frames[replayIndex - 1], frame);
-                            replayTime += Time.smoothDeltaTime * 1000 * replayTimescale;
-                        }
-                    }
-                    else
-                    {
-                        replayIndex++;
-                    }
+                    transform.position = frame.posMark;
+                    render.flipX = frame.dirMark;
+                    replayTime = frame.timeMark; 
+                    replayIndex++;
+                    GameManager.GM.canStopReplay = true; 
                 }
                 else
                 {
@@ -122,19 +121,17 @@ public class GhostActor : MonoBehaviour
         }
     }
 
-    private void DoLerp(GhostShot a, GhostShot b)
-    {
-        transform.position = Vector3.Slerp(a.posMark, b.posMark, Mathf.Clamp(replayTime, a.timeMark, b.timeMark));
-        render.flipX = b.dirMark; 
-    }
-
     public bool IsReplaying()
     {
         return isReplaying;
     }
 
-    public void SetFrames(GhostShot[] frames)
+    public void SetFrames(List<GhostShot> frames)
     {
-        this.frames = frames;
+        Debug.Log(frames.Count); 
+        foreach (var frame in frames)
+        {
+            this.frames.Add(frame); 
+        }
     }
 }

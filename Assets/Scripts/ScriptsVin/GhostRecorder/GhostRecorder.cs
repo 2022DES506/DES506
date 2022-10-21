@@ -5,12 +5,13 @@ using UnityEngine;
 
 public class GhostRecorder : MonoBehaviour
 {
-    private GhostShot[] frames;
+    [SerializeField] 
+    public List<GhostShot> frames = new List<GhostShot>();
 
     private bool isRecording;
 
     private int recordIndex = 0;
-    private float recordTime = 0.0f;            // in milliseconds
+    private float recordTime = 0.0f;          
 
     private SpriteRenderer render; 
 
@@ -42,15 +43,17 @@ public class GhostRecorder : MonoBehaviour
         render = GetComponent<SpriteRenderer>(); 
     }
 
-    public void StartRecording(float duration)
+    public void StartRecording()
     {
         if (!IsRecording())
         {
-            frames = new GhostShot[(int)(60 * duration)];
             recordIndex = 0;
-            recordTime = Time.time * 1000;
+            recordTime = Time.time; 
 
             isRecording = true;
+
+            GameManager.GM.canStartRecording = false;
+
             OnRecordingStart();
 
             Debug.LogFormat("Recording of {0} started", gameObject.name);
@@ -64,40 +67,39 @@ public class GhostRecorder : MonoBehaviour
             frames[recordIndex - 1].isFinal = true;
 
             isRecording = false;
+
+            GameManager.GM.canStopRecording = false;
+
             OnRecordingEnd();
 
             Debug.LogFormat("Recording of {0} ended at frame {1}", gameObject.name, recordIndex);
+
         }
     }
 
-    void Update()
+    private void FixedUpdate()
     {
+        recordTime += Time.fixedDeltaTime; 
         if (IsRecording())
         {
             RecordFrame();
+
+            GameManager.GM.canStopRecording = true; 
         }
     }
 
     private void RecordFrame()
     {
-        if (recordIndex < frames.Length)
+        GhostShot newFrame = new GhostShot()
         {
-            recordTime += Time.smoothDeltaTime * 1000;
-            GhostShot newFrame = new GhostShot()
-            {
-                timeMark = recordTime,
-                posMark = transform.position,
-                dirMark = render.flipX, 
-            };
+            timeMark = recordTime,
+            posMark = transform.position,
+            dirMark = render.flipX, 
+        };
 
-            frames[recordIndex] = newFrame;
+        frames.Add(newFrame); 
 
-            recordIndex++;
-        }
-        else
-        {
-            StopRecording();
-        }
+        recordIndex++;
     }
 
     public bool IsRecording()
@@ -105,8 +107,13 @@ public class GhostRecorder : MonoBehaviour
         return isRecording;
     }
 
-    public GhostShot[] GetFrames()
+    public List<GhostShot> GetFrames()
     {
-        return frames;
+        return frames; 
+    }
+
+    public void ClearFrames()
+    {
+        frames.Clear(); 
     }
 }

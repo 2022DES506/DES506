@@ -24,6 +24,8 @@ public class PlayerControl : MonoBehaviour
     private float fallAddition, jumpAddition; // 落地和起跳的重力加成
     [SerializeField]
     private float levelStart, levelHeight; // 最底层高度和每层高度
+    [SerializeField]
+    private GameObject ghostPrefab;   // 幽灵预制体
 
     // 组件
     private Rigidbody2D rb;                // 刚体
@@ -37,7 +39,8 @@ public class PlayerControl : MonoBehaviour
     private LayerMask groundLayer;  // 地面Layer
     [SerializeField]
     private LayerMask layerDown, layerLevel1, layerLevel2, layerLevel3, layerLevel4, layerUp; // 层级Layer
-    private Animator curSpringAni; 
+    private Animator curSpringAni;
+    private GhostRecorder gr;            // 幽灵留影机
 
     // 当前状态变量
     private bool isGround;                      // 是否在地面上  
@@ -48,6 +51,7 @@ public class PlayerControl : MonoBehaviour
     private float curSpeedChangeCD;     // 当前速度变化时间倒计时，小于0时恢复原速，重置倒计时
     private float superJumpStart;            // 超级跳起跳高度、冲刺起点【复用】 
     private int superJumpingState;         // 超级跳状态：0为非超级跳，1为超级跳起跳，2为超级跳冲刺 
+    private bool canSpawn;                     // 是否允许生成幽灵
 
     private void Start()
     {
@@ -55,18 +59,20 @@ public class PlayerControl : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+        gr = GetComponent<GhostRecorder>(); 
 
         // 必要的变量初始化
         // 速度、方向、速度状态的初始化
         curDirection = 1;  // 1 == dash right, -1 == dash left 
         curSpeed = dashSpeed; 
         curSpeedState = 0;
-        superJumpingState = 0; 
-
+        superJumpingState = 0;
+        canSpawn = false; 
     }
 
     private void Update()
     {
+        LapCheck();       // 不同圈数生成幽灵
         LevelCheck();     // 计算当前层数
         FlipMe();            // 翻转检测
         GroundCheck(); // 地面检测
@@ -74,6 +80,30 @@ public class PlayerControl : MonoBehaviour
         SpeedCheck();   // 速度的线性变化
     }
 
+    private void LapCheck()
+    {
+        GameObject _ghost;
+        if (canSpawn)
+        {
+            switch (GameManager.GM.curLap)
+            {
+                case 2:
+                    _ghost = Instantiate(ghostPrefab, transform.position, Quaternion.identity);
+                    _ghost.GetComponent<GhostActor>().recorder = gr;
+                    GameManager.GM.canStartReplay = true; 
+                    canSpawn = false; 
+                    break;
+                case 3:
+                    _ghost = Instantiate(ghostPrefab, transform.position, Quaternion.identity);
+                    _ghost.GetComponent<GhostActor>().recorder = gr;
+                    GameManager.GM.canStartReplay = true; 
+                    canSpawn = false; 
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
     private void LevelCheck()
     {
         // 根据碰撞层确定层数
@@ -331,7 +361,8 @@ public class PlayerControl : MonoBehaviour
         // 圈数记录
         if (collision.tag == "LapCheck")
         {
-            GameManager.GM.curLap++; 
+            GameManager.GM.curLap++;
+            canSpawn = true; 
         }
 
     }

@@ -156,7 +156,7 @@ RectTransform:
   m_Children:
   - {fileID: 1196916689}
   m_Father: {fileID: 1652425690}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -185,7 +185,7 @@ MonoBehaviour:
           m_MethodName: PlayOneShot
           m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 8300000, guid: 7022acc8e445d2f488d94d394ab42eba, type: 3}
+            m_ObjectArgument: {fileID: 8300000, guid: 5b1be0373c0f84b419785184e1b09633, type: 3}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
@@ -856,7 +856,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 110600289}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.000002861023, y: 1, z: -10}
+  m_LocalPosition: {x: 0, y: 1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 942838077}
@@ -1049,7 +1049,7 @@ MonoBehaviour:
           m_MethodName: PlayOneShot
           m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 8300000, guid: 7022acc8e445d2f488d94d394ab42eba, type: 3}
+            m_ObjectArgument: {fileID: 8300000, guid: 5b1be0373c0f84b419785184e1b09633, type: 3}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
@@ -1941,7 +1941,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: dbd3d02588362164891ba09a9bee7cef, type: 3}
+  m_audioClip: {fileID: 8300000, guid: ed3030e2d7dbde746b1a05d06489b29a, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -2359,7 +2359,7 @@ MonoBehaviour:
           m_MethodName: PlayOneShot
           m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 8300000, guid: 7022acc8e445d2f488d94d394ab42eba, type: 3}
+            m_ObjectArgument: {fileID: 8300000, guid: 5b1be0373c0f84b419785184e1b09633, type: 3}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
@@ -3100,7 +3100,7 @@ MonoBehaviour:
           m_MethodName: PlayOneShot
           m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 8300000, guid: 7022acc8e445d2f488d94d394ab42eba, type: 3}
+            m_ObjectArgument: {fileID: 8300000, guid: 5b1be0373c0f84b419785184e1b09633, type: 3}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
@@ -3463,7 +3463,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 7022acc8e445d2f488d94d394ab42eba, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 5b1be0373c0f84b419785184e1b09633, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -3691,7 +3691,7 @@ MonoBehaviour:
           m_MethodName: PlayOneShot
           m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 8300000, guid: 7022acc8e445d2f488d94d394ab42eba, type: 3}
+            m_ObjectArgument: {fileID: 8300000, guid: 5b1be0373c0f84b419785184e1b09633, type: 3}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
@@ -40414,10 +40414,6 @@ MonoBehaviour:
   curLevel: 0
   curCoins: 0
   curTimer: 0
-  canStartRecording: 0
-  canStopRecording: 0
-  canStartReplay: 0
-  canStopReplay: 0
 --- !u!4 &1087451769
 Transform:
   m_ObjectHideFlags: 0
@@ -42247,7 +42243,7 @@ RectTransform:
   m_Children:
   - {fileID: 1683761572}
   m_Father: {fileID: 1652425690}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -42276,7 +42272,7 @@ MonoBehaviour:
           m_MethodName: PlayOneShot
           m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 8300000, guid: 7022acc8e445d2f488d94d394ab42eba, type: 3}
+            m_ObjectArgument: {fileID: 8300000, guid: 5b1be0373c0f84b419785184e1b09633, type: 3}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
@@ -42562,7 +42558,7 @@ MonoBehaviour:
           m_MethodName: PlayOneShot
           m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 8300000, guid: 7022acc8e445d2f488d94d394ab42eba, type: 3}
+            m_ObjectArgument: {fileID: 8300000, guid: 5b1be0373c0f84b419785184e1b09633, type: 3}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
@@ -43033,8 +43029,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 200488002}
-  - {fileID: 1566172990}
   - {fileID: 50097052}
+  - {fileID: 1566172990}
   m_Father: {fileID: 2055710996}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -43605,7 +43601,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 1806905410}
-  jump: {fileID: 8300000, guid: 92f93550825db0b44a1b07738deecdc5, type: 3}
+  jump: {fileID: 8300000, guid: 07382ea617b19044e978ce2e68202b5c, type: 3}
 --- !u!1001 &1836343079
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -44361,8 +44357,8 @@ Tilemap:
   - first: {x: -1, y: -2, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 18
-      m_TileSpriteIndex: 18
+      m_TileIndex: 17
+      m_TileSpriteIndex: 17
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -44371,8 +44367,8 @@ Tilemap:
   - first: {x: 0, y: -2, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 18
-      m_TileSpriteIndex: 18
+      m_TileIndex: 17
+      m_TileSpriteIndex: 17
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -50184,9 +50180,9 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 317
+  - m_RefCount: 2
+    m_Data: {fileID: 11400000, guid: d67c0a974a913cc429a3b2b75a2e45f3, type: 2}
+  - m_RefCount: 315
     m_Data: {fileID: 11400000, guid: e44d669ca8d6f9f46a91855ba9cd2d6e, type: 2}
   - m_RefCount: 294
     m_Data: {fileID: 11400000, guid: 13a0aa9da8a31404cba24cfe59bf7a1f, type: 2}
@@ -50225,9 +50221,9 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 317
+  - m_RefCount: 2
+    m_Data: {fileID: 1437503401646794464, guid: fc584d329b77b9545b9c9c8bb829e553, type: 3}
+  - m_RefCount: 315
     m_Data: {fileID: 21300000, guid: 5b3fc46f13e9ff847a3da245ce2b89e8, type: 3}
   - m_RefCount: 294
     m_Data: {fileID: -5356574185940491189, guid: f00b48e034af7f748aa39edbcf48243c, type: 3}

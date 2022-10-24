@@ -53,7 +53,9 @@ public class PlayerControl : MonoBehaviour
     private float superJumpStart;            // 超级跳起跳高度、冲刺起点【复用】 
     private int superJumpingState;         // 超级跳状态：0为非超级跳，1为超级跳起跳，2为超级跳冲刺 
     private bool canSpawn;                     // 是否允许生成幽灵
-    private bool playerControl; 
+    private bool playerControl;               // 玩家控制
+    [SerializeField]
+    private int curKeys;                           // 钥匙数量
 
     private void Start()
     {
@@ -70,7 +72,8 @@ public class PlayerControl : MonoBehaviour
         curSpeedState = 0;
         superJumpingState = 0;
         canSpawn = false;
-        playerControl = true; 
+        playerControl = true;
+        curKeys = 0; 
     }
 
     private void Update()
@@ -381,7 +384,11 @@ public class PlayerControl : MonoBehaviour
     // 脱离触发体
     private void OnTriggerExit2D(Collider2D collision)
     {
-
+        if (collision.tag == "Key")
+        {
+            curKeys++; 
+            Destroy(collision.gameObject); 
+        }
     }
     #endregion
 

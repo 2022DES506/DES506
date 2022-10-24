@@ -8,6 +8,7 @@ TagManager:
   - SpeedUp
   - SlowDown
   - LapCheck
+  - Key
   layers:
   - Default
   - TransparentFX

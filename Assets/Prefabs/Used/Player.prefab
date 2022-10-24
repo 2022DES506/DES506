@@ -4950,11 +4950,11 @@ MonoBehaviour:
   dashSpeedFast: 600
   dashSpeedSlow: 200
   jumpForce: 8
-  superJumpForce: 20
+  superJumpForce: 40
   speedChangeCD: 2
   speedChangeRate: 0.01
-  superJumpHeight: 8
-  superJumpLength: 3
+  superJumpHeight: 12
+  superJumpLength: 4
   superJumpSpeed: 800
   fallAddition: 3.5
   jumpAddition: 1.5
@@ -4984,6 +4984,8 @@ MonoBehaviour:
   layerUp:
     serializedVersion: 2
     m_Bits: 2048
+  gr: {fileID: 0}
+  curKeys: 0
 --- !u!70 &92897004215128015
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -5012,6 +5014,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a3670a65ed5b4b4badfcb1ebe558904, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  frames: []
 --- !u!1 &92897004300292622
 GameObject:
   m_ObjectHideFlags: 0

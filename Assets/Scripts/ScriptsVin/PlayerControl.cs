@@ -312,7 +312,7 @@ public class PlayerControl : MonoBehaviour
         sr.flipX = true; 
     }
 
-    #region Åö×²ºÍ´¥·¢
+    #region Åö×²ºÍ´¥·¢ Collision
     // ´¥ÅöÅö×²Ìå
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -330,7 +330,8 @@ public class PlayerControl : MonoBehaviour
 
         if (collision.collider.tag == "Spring")
         {
-            curSpringAni = collision.collider.gameObject.GetComponent<Animator>(); 
+            curSpringAni = collision.collider.gameObject.GetComponent<Animator>();
+            SoundManager.SM.PlayTrampoline(); 
             StartSuperJump(); 
         }
 
@@ -354,7 +355,9 @@ public class PlayerControl : MonoBehaviour
 
             curSpeed = Mathf.Lerp(curSpeed, dashSpeedFast, speedChangeRate); 
             curSpeedChangeCD = speedChangeCD; 
-            curSpeedState = 1; 
+            curSpeedState = 1;
+
+            SoundManager.SM.PlaySpeedUp(); 
 
             Destroy(collision.gameObject); 
         }

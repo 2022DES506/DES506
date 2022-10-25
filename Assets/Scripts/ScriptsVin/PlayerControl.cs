@@ -380,6 +380,15 @@ public class PlayerControl : MonoBehaviour
             canSpawn = true; 
         }
 
+        // 撞门结算
+        if (collision.tag == "Door")
+        {
+            if (curKeys == 3)
+            {
+                GameManager.GM.ShowGameDone(); 
+            }
+        }
+
     }
     // 脱离触发体
     private void OnTriggerExit2D(Collider2D collision)

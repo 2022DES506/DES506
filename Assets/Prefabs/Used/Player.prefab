@@ -4952,7 +4952,7 @@ MonoBehaviour:
   jumpForce: 8
   superJumpForce: 40
   speedChangeCD: 2
-  speedChangeRate: 0.01
+  speedChangeRate: 1
   superJumpHeight: 12
   superJumpLength: 4
   superJumpSpeed: 800

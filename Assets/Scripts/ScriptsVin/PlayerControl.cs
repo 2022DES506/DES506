@@ -10,9 +10,9 @@ public class PlayerControl : MonoBehaviour
     [SerializeField]
     private float jumpForce, superJumpForce; // 弹跳力
     [SerializeField]
-    private float speedChangeCD = 2f;                 // 默认速度变化时间
+    private float speedChangeCD = 0f;                 // 默认速度变化时间
     [SerializeField]
-    private float speedChangeRate = 0.01f;          // 速度变化率
+    private float speedChangeRate = 1f;          // 速度变化率
     private float speedChangeDeviation = 0.01f; // 变化至既定速度所允许的误差值，0.01f 就好 
     [SerializeField]
     private float superJumpHeight; // 超级跳冲刺位置
@@ -175,6 +175,7 @@ public class PlayerControl : MonoBehaviour
         }
         jumpHold = Input.GetButton("Jump");       // 长按解除起跳抑制
     }
+
     private void SpeedCheck()
     {
         curSpeedChangeCD -= Time.deltaTime; 
@@ -197,7 +198,7 @@ public class PlayerControl : MonoBehaviour
             {
                 case -1:
                     // 减速
-                    curSpeed = Mathf.Lerp(dashSpeedSlow, curSpeed, 1 - speedChangeRate);
+                    curSpeed = Mathf.Lerp(curSpeed, dashSpeedSlow, speedChangeRate);
                     if (Mathf.Abs(curSpeed - dashSpeedSlow) < speedChangeDeviation)
                     {
                         curSpeed = dashSpeedSlow;
@@ -225,7 +226,7 @@ public class PlayerControl : MonoBehaviour
             }
         }
         
-    }
+    } 
 
     private void FixedUpdate()
     {
@@ -362,13 +363,13 @@ public class PlayerControl : MonoBehaviour
 
             SoundManager.SM.PlaySpeedUp(); 
 
-            Destroy(collision.gameObject); 
+            // Destroy(collision.gameObject); 
         }
 
         // 减速
         if (collision.tag == "SlowDown")
         {
-            curSpeed = Mathf.Lerp(dashSpeedSlow, curSpeed, 1-speedChangeRate); 
+            curSpeed = Mathf.Lerp(curSpeed, dashSpeedSlow, speedChangeRate); 
             curSpeedChangeCD = speedChangeCD; 
             curSpeedState = -1; 
         }

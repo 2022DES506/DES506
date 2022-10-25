@@ -17,6 +17,9 @@ public class GameManager : MonoBehaviour
     public int curCoins;
     public float curTimer;
 
+    [SerializeField]
+    private GameObject GameDoneUI; 
+
     private void OnEnable()
     {
         // 初始化单例
@@ -32,6 +35,11 @@ public class GameManager : MonoBehaviour
         curLevel = 0;
         curCoins = 0;
         curTimer = defaultTimer * 60; // 浮点数秒来计算时间
+    }
+
+    public void ShowGameDone()
+    {
+        GameDoneUI.SetActive(true); 
     }
 
 }

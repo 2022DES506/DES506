@@ -9,6 +9,7 @@ TagManager:
   - SlowDown
   - LapCheck
   - Key
+  - Door
   layers:
   - Default
   - TransparentFX

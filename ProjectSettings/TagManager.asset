@@ -10,6 +10,7 @@ TagManager:
   - LapCheck
   - Key
   - Door
+  - FlyArea
   layers:
   - Default
   - TransparentFX

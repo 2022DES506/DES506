@@ -56,6 +56,7 @@ public class PlayerControl : MonoBehaviour
     private bool playerControl;               // 玩家控制
     [SerializeField]
     private int curKeys;                           // 钥匙数量
+    private bool isFlying;                        // 是否可以连跳
 
     private void Start()
     {
@@ -73,7 +74,8 @@ public class PlayerControl : MonoBehaviour
         superJumpingState = 0;
         canSpawn = false;
         playerControl = true;
-        curKeys = 0; 
+        curKeys = 0;
+        isFlying = false; 
     }
 
     private void Update()
@@ -165,15 +167,26 @@ public class PlayerControl : MonoBehaviour
     }
     private void Jump()
     {
-        // if (isGround && Input.GetButtonDown("Jump"))
-        if (Input.GetButtonDown("Jump")) // 测试用，连跳
+        if (isFlying)
         {
-            // 在地面上按下跳跃一瞬间
-            rb.velocity += Vector2.up * jumpForce; // 起跳速度
-            dustVFX.Play();                                        // 扬尘特效
-            SoundManager.SM.PlayJump();              // 跳跃音效
+            if (Input.GetButtonDown("Jump"))
+            {
+                rb.velocity += Vector2.up * jumpForce; // 起跳速度
+                dustVFX.Play();                                        // 扬尘特效
+                SoundManager.SM.PlayJump();              // 跳跃音效
+            }
         }
-        jumpHold = Input.GetButton("Jump");       // 长按解除起跳抑制
+        else
+        {
+            if (isGround && Input.GetButtonDown("Jump"))
+            {
+                // 在地面上按下跳跃一瞬间
+                rb.velocity += Vector2.up * jumpForce; // 起跳速度
+                dustVFX.Play();                                        // 扬尘特效
+                SoundManager.SM.PlayJump();              // 跳跃音效
+            }
+        }
+        jumpHold = Input.GetButton("Jump");           // 长按解除起跳抑制
     }
 
     private void SpeedCheck()
@@ -280,7 +293,14 @@ public class PlayerControl : MonoBehaviour
         if (rb.velocity.y < 0)
         {
             // 落地时的速度增幅 
-            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallAddition - 1) * Time.fixedDeltaTime;
+            if (isFlying)
+            {
+                rb.velocity += Vector2.up * Physics2D.gravity.y * (jumpAddition - 1) * Time.fixedDeltaTime; 
+            }
+            else
+            {
+                rb.velocity += Vector2.up * Physics2D.gravity.y * (fallAddition - 1) * Time.fixedDeltaTime;
+            }
         }
         else if (rb.velocity.y > 0 && !jumpHold) 
         {
@@ -388,6 +408,12 @@ public class PlayerControl : MonoBehaviour
             {
                 GameManager.GM.ShowGameDone(); 
             }
+        }
+
+        // 飞行区域
+        if (collision.tag == "FlyArea")
+        {
+            isFlying = !isFlying; 
         }
 
     }

@@ -18,7 +18,7 @@ public class GhostSystem : MonoBehaviour
     private void Start()
     {
         recorders = FindObjectsOfType<GhostRecorder>();
-        StartRecording();
+        Invoke("StartRecording", 3f);  
         tempFrameLock = false;
         tempRecordLock = true; 
     }

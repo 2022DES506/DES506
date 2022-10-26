@@ -73,9 +73,16 @@ public class PlayerControl : MonoBehaviour
         curSpeedState = 0;
         superJumpingState = 0;
         canSpawn = false;
-        playerControl = true;
+        playerControl = false;
         curKeys = 0;
-        isFlying = false; 
+        isFlying = false;
+
+        Invoke("StartRun", 3f); // 3√Î∫Û÷¥––StartRun
+    }
+
+    private void StartRun()
+    {
+        playerControl = true; 
     }
 
     private void Update()

@@ -21,7 +21,11 @@ public class GameManager : MonoBehaviour
     private GameObject GameDoneUI;
 
     [SerializeField]
-    private GameObject CD3, CD2, CD1, CDGo; 
+    private GameObject CD3, CD2, CD1, CDGo;
+
+    [SerializeField]
+    private GameObject Background;
+    private bool changeBG; 
 
     private void OnEnable()
     {
@@ -39,8 +43,29 @@ public class GameManager : MonoBehaviour
         curCoins = 0;
         curTimer = defaultTimer * 60; // 浮点数秒来计算时间
 
-        ShowCountdown(); 
+        ShowCountdown();
+
+        changeBG = false; 
     }
+
+    private void Update()
+    {
+        BackGroundCheck(); 
+    }
+
+    private void BackGroundCheck()
+    {
+        if (changeBG == false && curLap == 2)
+        {
+            
+            changeBG = !changeBG; 
+        }
+        if (changeBG == true && curLap == 3)
+        {
+
+        }
+    }
+
     #region Countdown 开场倒计时
 
     private void ShowCountdown()

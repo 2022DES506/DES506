@@ -4817,8 +4817,8 @@ GameObject:
   - component: {fileID: 92897004215128014}
   - component: {fileID: 92897004215128012}
   - component: {fileID: 92897004215128013}
-  - component: {fileID: 92897004215128015}
   - component: {fileID: 493455264}
+  - component: {fileID: 5702917926338837157}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -4902,7 +4902,7 @@ SpriteRenderer:
   m_SortingLayerID: -190403807
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4138da547d0578341bf8224571b7e5da, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 45d8d6a836fb52e4297b8a1c8d8566d5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4952,8 +4952,8 @@ MonoBehaviour:
   jumpForce: 8
   superJumpForce: 40
   speedChangeCD: 2
-  speedChangeRate: 1
-  superJumpHeight: 12
+  speedChangeRate: 0.8
+  superJumpHeight: 15
   superJumpLength: 4
   superJumpSpeed: 800
   fallAddition: 3.5
@@ -4986,22 +4986,6 @@ MonoBehaviour:
     m_Bits: 2048
   gr: {fileID: 0}
   curKeys: 0
---- !u!70 &92897004215128015
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 92897004215128019}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: a53014777b5e8144db03ed36efe0d7a6, type: 2}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.005949974, y: -0.19976532}
-  m_Size: {x: 0.96375656, y: 1.3418319}
-  m_Direction: 0
 --- !u!114 &493455264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5015,6 +4999,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   frames: []
+--- !u!58 &5702917926338837157
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 92897004215128019}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: a53014777b5e8144db03ed36efe0d7a6, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.98
 --- !u!1 &92897004300292622
 GameObject:
   m_ObjectHideFlags: 0

@@ -23,9 +23,15 @@ public class PlayerControl : MonoBehaviour
     [SerializeField]
     private float fallAddition, jumpAddition; // 落地和起跳的重力加成
     [SerializeField]
+    private float jumpHeight, holdJumpHeight; // 两种跳跃高度控制
+    [SerializeField]
     private float levelStart, levelHeight; // 最底层高度和每层高度
     [SerializeField]
     private GameObject ghostPrefab;   // 幽灵预制体
+    [SerializeField]
+    private float flyForce;                       // 起飞力度
+    [SerializeField]
+    private float flySpeed;                      // 飞行速度
 
     // 组件
     private Rigidbody2D rb;                // 刚体
@@ -57,6 +63,9 @@ public class PlayerControl : MonoBehaviour
     [SerializeField]
     private int curKeys;                           // 钥匙数量
     private bool isFlying;                        // 是否可以连跳
+    private bool isJumping;                    // 是否处于起跳过程
+    private float curJumpStart;               // 当前跳跃高度
+    private float speedBeforeFly;            // 记录进入飞行域之前的速度
 
     private void Start()
     {
@@ -87,16 +96,40 @@ public class PlayerControl : MonoBehaviour
 
     private void Update()
     {
-        if (!playerControl) return; 
-         
+        if (!playerControl) return;
+
+        JumpHeightCheck(); // 控制跳跃高度
         LapCheck();       // 不同圈数生成幽灵
         LevelCheck();     // 计算当前层数
         FlipMe();            // 翻转检测
         GroundCheck(); // 地面检测
         Jump();              // 跳跃     
         SpeedCheck();   // 速度的线性变化
+
     }
 
+    private void JumpHeightCheck()
+    {
+        if (isJumping)
+        {
+            if (!jumpHold)
+            {
+                if (transform.position.y - curJumpStart >= jumpHeight)
+                {
+                    rb.velocity = new Vector2(rb.velocity.x, 0f);
+                    isJumping = !isJumping;
+                }
+            }
+            else
+            {
+                if (transform.position.y - curJumpStart >= holdJumpHeight)
+                {
+                    rb.velocity = new Vector2(rb.velocity.x, 0f);
+                    isJumping = !isJumping; 
+                }
+            }
+        }
+    }
     private void LapCheck()
     {
         GameObject _ghost;
@@ -178,7 +211,7 @@ public class PlayerControl : MonoBehaviour
         {
             if (Input.GetButtonDown("Jump"))
             {
-                rb.velocity += Vector2.up * jumpForce; // 起跳速度
+                rb.velocity += Vector2.up * flyForce;      // 起跳速度
                 dustVFX.Play();                                        // 扬尘特效
                 SoundManager.SM.PlayJump();              // 跳跃音效
             }
@@ -191,6 +224,9 @@ public class PlayerControl : MonoBehaviour
                 rb.velocity += Vector2.up * jumpForce; // 起跳速度
                 dustVFX.Play();                                        // 扬尘特效
                 SoundManager.SM.PlayJump();              // 跳跃音效
+
+                isJumping = true;
+                curJumpStart = transform.position.y;  
             }
         }
         jumpHold = Input.GetButton("Jump");           // 长按解除起跳抑制
@@ -198,7 +234,7 @@ public class PlayerControl : MonoBehaviour
 
     private void SpeedCheck()
     {
-        curSpeedChangeCD -= Time.deltaTime; 
+        curSpeedChangeCD -= Time.deltaTime;
         if (curSpeedChangeCD <= 0)
         {
             // 倒计时结束后的速度线性重置
@@ -207,7 +243,7 @@ public class PlayerControl : MonoBehaviour
                 curSpeed = Mathf.Lerp(curSpeed, dashSpeed, speedChangeRate);
                 if (Mathf.Abs(curSpeed - dashSpeed) < speedChangeDeviation)
                 {
-                    curSpeed = dashSpeed; 
+                    curSpeed = dashSpeed;
                 }
             }
         }
@@ -240,12 +276,12 @@ public class PlayerControl : MonoBehaviour
                     curSpeed = Mathf.Lerp(curSpeed, dashSpeedFast, speedChangeRate);
                     if (Mathf.Abs(curSpeed - dashSpeedFast) < speedChangeDeviation)
                     {
-                        curSpeed = dashSpeedFast; 
+                        curSpeed = dashSpeedFast;
                     }
                     break;
             }
         }
-        
+
     } 
 
     private void FixedUpdate()
@@ -421,6 +457,14 @@ public class PlayerControl : MonoBehaviour
         if (collision.tag == "FlyArea")
         {
             isFlying = !isFlying; 
+            if (isFlying)
+            {
+                speedBeforeFly = curSpeed;
+            }
+            else
+            {
+                curSpeed = speedBeforeFly; 
+            }
         }
 
     }

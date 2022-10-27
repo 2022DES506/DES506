@@ -4949,18 +4949,22 @@ MonoBehaviour:
   dashSpeed: 400
   dashSpeedFast: 600
   dashSpeedSlow: 200
-  jumpForce: 8
+  jumpForce: 20
   superJumpForce: 40
   speedChangeCD: 2
   speedChangeRate: 0.8
   superJumpHeight: 15
   superJumpLength: 4
   superJumpSpeed: 800
-  fallAddition: 3.5
+  fallAddition: 4
   jumpAddition: 1.5
+  jumpHeight: 4
+  holdJumpHeight: 5
   levelStart: 5.5
   levelHeight: 18
   ghostPrefab: {fileID: 5661829261713328622, guid: 30c9e7343f271164199137f16768e6ab, type: 3}
+  flyForce: 5
+  flySpeed: 300
   dustVFX: {fileID: 92897003154328056}
   groundCheck: {fileID: 2465344323351189642}
   groundLayer:

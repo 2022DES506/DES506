@@ -25,7 +25,12 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private GameObject Background;
-    private bool changeBG; 
+    private bool changeBG;
+
+    public Vector2 playerPos; // 角色实时位置
+    public int playerDir;  // 角色实时方向
+
+    public bool layerChangeLock;
 
     private void OnEnable()
     {
@@ -45,12 +50,14 @@ public class GameManager : MonoBehaviour
 
         ShowCountdown();
 
-        changeBG = false; 
+        changeBG = false;
+        layerChangeLock = false;
+
     }
 
     private void Update()
     {
-        BackGroundCheck(); 
+        BackGroundCheck();
     }
 
     private void BackGroundCheck()

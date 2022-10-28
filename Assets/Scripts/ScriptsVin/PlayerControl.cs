@@ -48,6 +48,8 @@ public class PlayerControl : MonoBehaviour
     private Animator curSpringAni;
     [SerializeField]
     private GhostRecorder gr;            // 幽灵留影机
+    [SerializeField]
+    private LayerMask BgcLayer; 
 
     // 当前状态变量
     private bool isGround;                      // 是否在地面上  
@@ -98,6 +100,7 @@ public class PlayerControl : MonoBehaviour
     {
         if (!playerControl) return;
 
+        // BackgroundChangeCheck(); 
         JumpHeightCheck(); // 控制跳跃高度
         LapCheck();       // 不同圈数生成幽灵
         LevelCheck();     // 计算当前层数
@@ -105,9 +108,15 @@ public class PlayerControl : MonoBehaviour
         GroundCheck(); // 地面检测
         Jump();              // 跳跃     
         SpeedCheck();   // 速度的线性变化
+        DataToManager(); // 传递自身信息给Manager
 
     }
 
+    private void DataToManager()
+    {
+        GameManager.GM.playerPos = transform.position;
+        GameManager.GM.playerDir = curDirection; 
+    }
     private void JumpHeightCheck()
     {
         if (isJumping)
@@ -201,6 +210,19 @@ public class PlayerControl : MonoBehaviour
 
         */
     }
+
+    private void BackgroundChangeCheck()
+    {
+        if (Physics2D.OverlapCircle(groundCheck.position, 0.1f, BgcLayer))
+        {
+            GameManager.GM.layerChangeLock = false;
+        }
+        else
+        {
+            GameManager.GM.layerChangeLock = true;
+        }
+    }
+
     private void GroundCheck()
     {
         isGround = Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);  
@@ -326,6 +348,7 @@ public class PlayerControl : MonoBehaviour
                     rb.velocity = new Vector2(curSpeed * curDirection * Time.fixedDeltaTime, rb.velocity.y); // 速度恢复
                     superJumpingState = 0; // 重置超级跳状态
                 }
+
                 break;
             default:
                 break;

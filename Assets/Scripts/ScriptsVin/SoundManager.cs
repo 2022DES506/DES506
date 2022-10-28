@@ -9,7 +9,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField]
     private AudioSource audioSource;
     [SerializeField]
-    private AudioClip jump, pickup, trampoline;
+    private AudioClip jump, pickup, trampoline, key;
 
     private void OnEnable()
     {
@@ -34,6 +34,12 @@ public class SoundManager : MonoBehaviour
     public void PlayTrampoline()
     {
         audioSource.clip = trampoline;
+        audioSource.Play();
+    }
+
+    public void PlayKeyGrab()
+    {
+        audioSource.clip = key;
         audioSource.Play();
     }
 }

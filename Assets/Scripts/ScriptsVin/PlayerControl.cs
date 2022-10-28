@@ -473,7 +473,8 @@ public class PlayerControl : MonoBehaviour
     {
         if (collision.tag == "Key")
         {
-            curKeys++; 
+            curKeys++;
+            SoundManager.SM.PlayKeyGrab();
             Destroy(collision.gameObject); 
         }
     }

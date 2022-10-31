@@ -20,6 +20,8 @@ public class BgMoveY : MonoBehaviour
             _newPosY = GameManager.GM.playerPos.y + backgroundTop - GameManager.GM.playerPos.y / playerTop * backgroundTop;
 
             transform.position = new Vector2(transform.position.x, _newPosY);
+
+            GameManager.GM.layerChangeLock = true; 
         }
     }
 }

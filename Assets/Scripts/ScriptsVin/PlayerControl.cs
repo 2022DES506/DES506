@@ -32,6 +32,8 @@ public class PlayerControl : MonoBehaviour
     private float flyForce;                       // 起飞力度
     [SerializeField]
     private float flySpeed;                      // 飞行速度
+    [SerializeField]
+    private float hDown, hRight1, hRight2, hRight3, hRight4, hUp, hLeft4, hLeft3, hLeft2, hLeft1; 
 
     // 组件
     private Rigidbody2D rb;                // 刚体
@@ -104,12 +106,67 @@ public class PlayerControl : MonoBehaviour
         JumpHeightCheck(); // 控制跳跃高度
         LapCheck();       // 不同圈数生成幽灵
         LevelCheck();     // 计算当前层数
+        LayerCheck();     // 根据高度计算层数
         FlipMe();            // 翻转检测
         GroundCheck(); // 地面检测
         Jump();              // 跳跃     
         SpeedCheck();   // 速度的线性变化
         DataToManager(); // 传递自身信息给Manager
 
+    }
+
+    private void LayerCheck()
+    {
+        if (transform.position.y == hDown && GameManager.GM.curLayerState == GameManager.LayerState.layerLeft1)
+        {
+            GameManager.GM.curLayerState = GameManager.LayerState.layerDown;
+            GameManager.GM.layerChangeLock = false; 
+        }
+        if (transform.position.y == hRight1 && GameManager.GM.curLayerState == GameManager.LayerState.layerDown)
+        {
+            GameManager.GM.curLayerState = GameManager.LayerState.layerRight1;
+            GameManager.GM.layerChangeLock = false; 
+        }
+        if (transform.position.y == hRight2 && GameManager.GM.curLayerState == GameManager.LayerState.layerRight1)
+        {
+            GameManager.GM.curLayerState = GameManager.LayerState.layerRight2;
+            GameManager.GM.layerChangeLock = false; 
+        }
+        if (transform.position.y == hRight3 && GameManager.GM.curLayerState == GameManager.LayerState.layerRight2)
+        {
+            GameManager.GM.curLayerState = GameManager.LayerState.layerRight3;
+            GameManager.GM.layerChangeLock = false; 
+        }
+        if (transform.position.y == hRight4 && GameManager.GM.curLayerState == GameManager.LayerState.layerRight3)
+        {
+            GameManager.GM.curLayerState = GameManager.LayerState.layerRight4;
+            GameManager.GM.layerChangeLock = false; 
+        }
+        if (transform.position.y == hUp && GameManager.GM.curLayerState == GameManager.LayerState.layerRight4) 
+        {
+            GameManager.GM.curLayerState = GameManager.LayerState.layerUp;
+            GameManager.GM.layerChangeLock = false; 
+        }
+        if (transform.position.y == hLeft4 && GameManager.GM.curLayerState == GameManager.LayerState.layerUp)
+        {
+            GameManager.GM.curLayerState = GameManager.LayerState.layerLeft4;
+            GameManager.GM.layerChangeLock = false; 
+        }
+        if (transform.position.y == hLeft3 && GameManager.GM.curLayerState == GameManager.LayerState.layerLeft4)
+        {
+            GameManager.GM.curLayerState = GameManager.LayerState.layerLeft3;
+            GameManager.GM.layerChangeLock = false; 
+        }
+        if (transform.position.y == hLeft2 && GameManager.GM.curLayerState == GameManager.LayerState.layerLeft3)
+        {
+            GameManager.GM.curLayerState = GameManager.LayerState.layerLeft2;
+            GameManager.GM.layerChangeLock = false; 
+        }
+        if (transform.position.y == hLeft1 && GameManager.GM.curLayerState == GameManager.LayerState.layerLeft2)
+        {
+            GameManager.GM.curLayerState = GameManager.LayerState.layerLeft1;
+            GameManager.GM.layerChangeLock = false; 
+        }
     }
 
     private void DataToManager()

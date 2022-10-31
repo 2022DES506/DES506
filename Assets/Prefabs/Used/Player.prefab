@@ -4965,6 +4965,16 @@ MonoBehaviour:
   ghostPrefab: {fileID: 5661829261713328622, guid: 30c9e7343f271164199137f16768e6ab, type: 3}
   flyForce: 5
   flySpeed: 300
+  hDown: -1
+  hRight1: 21
+  hRight2: 33
+  hRight3: 55
+  hRight4: 67
+  hUp: 89
+  hLeft4: 71
+  hLeft3: 53
+  hLeft2: 45
+  hLeft1: 29
   dustVFX: {fileID: 92897003154328056}
   groundCheck: {fileID: 2465344323351189642}
   groundLayer:
@@ -4989,6 +4999,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   gr: {fileID: 0}
+  BgcLayer:
+    serializedVersion: 2
+    m_Bits: 0
   curKeys: 0
 --- !u!114 &493455264
 MonoBehaviour:

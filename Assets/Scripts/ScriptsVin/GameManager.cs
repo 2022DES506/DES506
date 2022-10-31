@@ -7,6 +7,20 @@ public class GameManager : MonoBehaviour
     // 声明单例
     public static GameManager GM;
 
+    public enum LayerState
+    {
+        layerDown,
+        layerRight1,
+        layerRight2,
+        layerRight3,
+        layerRight4,
+        layerUp,
+        layerLeft4, 
+        layerLeft3,
+        layerLeft2, 
+        layerLeft1,  
+    };
+
     // 可调控变量
     [SerializeField]
     private int defaultTimer;
@@ -32,6 +46,8 @@ public class GameManager : MonoBehaviour
 
     public bool layerChangeLock;
 
+    public LayerState curLayerState;  
+
     private void OnEnable()
     {
         // 初始化单例
@@ -52,6 +68,8 @@ public class GameManager : MonoBehaviour
 
         changeBG = false;
         layerChangeLock = false;
+
+        curLayerState = LayerState.layerLeft1; 
 
     }
 

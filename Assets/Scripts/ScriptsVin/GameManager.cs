@@ -38,6 +38,13 @@ public class GameManager : MonoBehaviour
     private GameObject CD3, CD2, CD1, CDGo;
 
     [SerializeField]
+    private GameObject CoinsLap1, CoinsLap2, CoinsLap3;
+    [SerializeField]
+    private GameObject BGLap1, BGLap2, BGLap3;
+    [SerializeField]
+    private GameObject CamGR, CamGL; 
+
+    [SerializeField]
     private GameObject Background;
     private bool changeBG;
 
@@ -76,6 +83,58 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         BackGroundCheck();
+        ItemsLapShowHide();
+        CameraCheck(); 
+    }
+
+    private void CameraCheck()
+    {
+        switch (playerDir)
+        {
+            case 1:
+                CamGR.SetActive(true);
+                CamGL.SetActive(false); 
+                break;
+            case -1:
+                CamGR.SetActive(false);
+                CamGL.SetActive(true); 
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void ItemsLapShowHide()
+    {
+        switch (curLap)
+        {
+            case 1:
+                CoinsLap1.SetActive(true);
+                CoinsLap2.SetActive(false);
+                CoinsLap3.SetActive(false);
+                BGLap1.SetActive(true);
+                BGLap2.SetActive(false);
+                BGLap3.SetActive(false);
+                break;
+            case 2:
+                CoinsLap1.SetActive(false);
+                CoinsLap2.SetActive(true);
+                CoinsLap3.SetActive(false);
+                BGLap1.SetActive(false);
+                BGLap2.SetActive(true);
+                BGLap3.SetActive(false);
+                break;
+            case 3:
+                CoinsLap1.SetActive(false);
+                CoinsLap2.SetActive(false);
+                CoinsLap3.SetActive(true);
+                BGLap1.SetActive(false);
+                BGLap2.SetActive(false);
+                BGLap3.SetActive(true); 
+                break; 
+            default:
+                break;
+        }
     }
 
     private void BackGroundCheck()

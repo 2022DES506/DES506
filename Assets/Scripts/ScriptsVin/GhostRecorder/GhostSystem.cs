@@ -57,6 +57,7 @@ public class GhostSystem : MonoBehaviour
             {
                 if (tempRecordLock == true)
                 {
+                    StopReplay();
                     StopRecording();
                     tempRecordLock = false; 
                 }

@@ -1550,7 +1550,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &201054369
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3004,8 +3004,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 114.74689, y: 53.3981}
-  m_SizeDelta: {x: 215.4938, y: 146.8725}
+  m_AnchoredPosition: {x: 114.74689, y: 9.7599}
+  m_SizeDelta: {x: 215.4938, y: 234.1489}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &500714140
 MonoBehaviour:
@@ -3040,18 +3040,28 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Mixkit
+  m_Text: 'Vincent Han
 
-    Royalty Free Sound FX
+    Harry McGuigan
+
+    Link Chen
+
+    Yang Huang
+
+
+    Mixkit
+
+    Royalty
+    Free Sound FX
 
     Cool Sound FX
 
-    Sound Effects
-    Bank
+    Sound Effects Bank
 
     Listener
 
-    Gravity Sounds
+    Gravity
+    Sounds
 
     Satidsawat Panidchapon'
 --- !u!222 &500714141
@@ -4365,7 +4375,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &808715839
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5733,8 +5743,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -87, y: 53.397903}
-  m_SizeDelta: {x: 160, y: 146.8722}
+  m_AnchoredPosition: {x: -87, y: 9.7597}
+  m_SizeDelta: {x: 160, y: 234.15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1385408355
 MonoBehaviour:
@@ -5769,7 +5779,13 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Audio Sources
+  m_Text: 'Developers
+
+
+
+
+
+    Audio Sources'
 --- !u!222 &1385408356
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8092,8 +8108,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 3.8365, y: -0.00051116943}
-  m_SizeDelta: {x: 519.0027, y: 400}
+  m_AnchoredPosition: {x: 3.8365, y: -0.00013518}
+  m_SizeDelta: {x: 519.0027, y: 418}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1798096112
 MonoBehaviour:

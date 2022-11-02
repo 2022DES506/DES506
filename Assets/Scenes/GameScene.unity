@@ -54727,6 +54727,8 @@ MonoBehaviour:
   pickup: {fileID: 8300000, guid: c8e80bde065bfe549af7037b41177548, type: 3}
   trampoline: {fileID: 8300000, guid: 478200dffc80eb741ac2f9ff74eb55c1, type: 3}
   key: {fileID: 8300000, guid: 18c6c6a39f0c1ce458a58580086dd51e, type: 3}
+  Slowdown: {fileID: 8300000, guid: 35406d0a001438e4e9d856dba94c4712, type: 3}
+  boost: {fileID: 8300000, guid: 7264f48b8eebdaf42864296ce307ea88, type: 3}
 --- !u!1001 &1826502026
 PrefabInstance:
   m_ObjectHideFlags: 0

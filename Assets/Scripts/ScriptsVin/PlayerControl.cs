@@ -504,7 +504,7 @@ public class PlayerControl : MonoBehaviour
             curSpeedChangeCD = speedChangeCD; 
             curSpeedState = 1;
 
-            SoundManager.SM.PlaySpeedUp(); 
+            SoundManager.SM.PlaySpeedUp();
 
             // Destroy(collision.gameObject); 
         }
@@ -514,7 +514,9 @@ public class PlayerControl : MonoBehaviour
         {
             curSpeed = Mathf.Lerp(curSpeed, dashSpeedSlow, speedChangeRate); 
             curSpeedChangeCD = speedChangeCD; 
-            curSpeedState = -1; 
+            curSpeedState = -1;
+
+            SoundManager.SM.PlaySlowdown();
         }
 
         // È¦Êý¼ÇÂ¼
@@ -545,6 +547,8 @@ public class PlayerControl : MonoBehaviour
             {
                 curSpeed = speedBeforeFly; 
             }
+
+            SoundManager.SM.PlayBoost();
         }
 
     }

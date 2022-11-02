@@ -205,7 +205,9 @@ public class GameManager : MonoBehaviour
     }
     private void CloseCDGo()
     {
-        CDGo.SetActive(false); 
+        CDGo.SetActive(false);
+
+        SoundManager.SM.PlayBGM(); 
     }
 
     #endregion

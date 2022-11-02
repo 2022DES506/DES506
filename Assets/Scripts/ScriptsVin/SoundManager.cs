@@ -6,12 +6,17 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager SM;
 
-    [SerializeField]
+    [SerializeField, Header("Main Audio Source")]
     private AudioSource audioSource;
+    [SerializeField, Header("BGM Audio Source")]
+    private AudioSource bgmAudioSource; 
+    [Header("AudioClips")]
     [SerializeField]
     private AudioClip jump, pickup, trampoline, key;
     [SerializeField]
     private AudioClip Slowdown, boost;
+    [SerializeField]
+    private AudioClip backgroundMusic; 
 
     private void OnEnable()
     {
@@ -19,6 +24,12 @@ public class SoundManager : MonoBehaviour
         {
             SoundManager.SM = this; 
         }
+    }
+
+    public void PlayBGM()
+    {
+        bgmAudioSource.clip = backgroundMusic;
+        bgmAudioSource.Play(); 
     }
 
     public void PlayJump()

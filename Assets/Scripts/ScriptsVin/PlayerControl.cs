@@ -467,6 +467,8 @@ public class PlayerControl : MonoBehaviour
         {
             isGround = true;
 
+            rb.velocity = new Vector2(rb.velocity.x, 0f); // 防止下落速度过快造成的反弹或穿模
+
             dustVFX.Play(); 
 
             if (anim.GetBool("isJump"))

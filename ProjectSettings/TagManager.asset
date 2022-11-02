@@ -11,6 +11,7 @@ TagManager:
   - Key
   - Door
   - FlyArea
+  - SlopeEnd
   layers:
   - Default
   - TransparentFX

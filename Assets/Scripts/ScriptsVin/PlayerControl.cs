@@ -557,6 +557,11 @@ public class PlayerControl : MonoBehaviour
             SoundManager.SM.PlayKeyGrab();
             Destroy(collision.gameObject); 
         }
+
+        if (collision.tag == "SlopeEnd")
+        {
+            rb.velocity = new Vector2(rb.velocity.x, 0f); 
+        }
     }
     #endregion
 

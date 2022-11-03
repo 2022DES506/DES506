@@ -331,8 +331,6 @@ public class PlayerControl : MonoBehaviour
                     curSpeed = dashSpeed;
                 }
             }
-
-            GameManager.GM.isSpeedUp = false; 
         }
         else
         {
@@ -516,8 +514,6 @@ public class PlayerControl : MonoBehaviour
 
             SoundManager.SM.PlaySpeedUp();
 
-            GameManager.GM.isSpeedUp = true; 
-
             // Destroy(collision.gameObject); 
         }
 
@@ -529,8 +525,6 @@ public class PlayerControl : MonoBehaviour
             curSpeedState = -1;
 
             SoundManager.SM.PlaySlowdown();
-
-            GameManager.GM.isSpeedUp = false; 
         }
 
         // È¦Êý¼ÇÂ¼

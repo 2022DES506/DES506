@@ -92,6 +92,7 @@ public class GameManager : MonoBehaviour
     {
         switch (playerDir)
         {
+            // º”ÀŸ
             case 1:
                 if (isSpeedUp)
                 {
@@ -106,6 +107,7 @@ public class GameManager : MonoBehaviour
                 CamGL.SetActive(false);
                 CamGLb.SetActive(false); 
                 break;
+            // ºıÀŸ
             case -1:
                 if (isSpeedUp)
                 {

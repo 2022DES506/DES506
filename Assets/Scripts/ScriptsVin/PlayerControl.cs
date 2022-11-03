@@ -205,6 +205,7 @@ public class PlayerControl : MonoBehaviour
         {
             switch (GameManager.GM.curLap)
             {
+                // 生成幽灵和指示箭头
                 case 2:
                     _ghost = Instantiate(ghostPrefab, transform.position, Quaternion.identity);
                     _ghost.GetComponent<GhostActor>().recorder = gr;

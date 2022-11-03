@@ -33,7 +33,9 @@ public class PlayerControl : MonoBehaviour
     [SerializeField]
     private float flySpeed;                      // 飞行速度
     [SerializeField]
-    private float hDown, hRight1, hRight2, hRight3, hRight4, hUp, hLeft4, hLeft3, hLeft2, hLeft1; 
+    private float hDown, hRight1, hRight2, hRight3, hRight4, hUp, hLeft4, hLeft3, hLeft2, hLeft1;
+    [SerializeField]
+    private GameObject arrowPrefab; 
 
     // 组件
     private Rigidbody2D rb;                // 刚体
@@ -198,7 +200,7 @@ public class PlayerControl : MonoBehaviour
     }
     private void LapCheck()
     {
-        GameObject _ghost;
+        GameObject _ghost, _arrow;
         if (canSpawn)
         {
             switch (GameManager.GM.curLap)
@@ -206,11 +208,15 @@ public class PlayerControl : MonoBehaviour
                 case 2:
                     _ghost = Instantiate(ghostPrefab, transform.position, Quaternion.identity);
                     _ghost.GetComponent<GhostActor>().recorder = gr;
+                    _arrow = Instantiate(arrowPrefab, transform.position, Quaternion.identity, transform);
+                    _arrow.GetComponent<Arrow>().tarGhost = _ghost; 
                     canSpawn = false; 
                     break;
                 case 3:
                     _ghost = Instantiate(ghostPrefab, transform.position, Quaternion.identity);
-                    _ghost.GetComponent<GhostActor>().recorder = gr;
+                    _ghost.GetComponent<GhostActor>().recorder = gr; 
+                    _arrow = Instantiate(arrowPrefab, transform.position, Quaternion.identity, transform);
+                    _arrow.GetComponent<Arrow>().tarGhost = _ghost; 
                     canSpawn = false; 
                     break;
                 case 4:

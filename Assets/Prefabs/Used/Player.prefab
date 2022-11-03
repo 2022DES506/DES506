@@ -4951,8 +4951,8 @@ MonoBehaviour:
   dashSpeedSlow: 200
   jumpForce: 20
   superJumpForce: 40
-  speedChangeCD: 2
-  speedChangeRate: 0.8
+  speedChangeCD: 0.5
+  speedChangeRate: 0.98
   superJumpHeight: 15
   superJumpLength: 4
   superJumpSpeed: 800
@@ -4975,6 +4975,7 @@ MonoBehaviour:
   hLeft3: 53
   hLeft2: 45
   hLeft1: 29
+  arrowPrefab: {fileID: 2472989919474917806, guid: 163a2a96d47481549ad1b36550aaa599, type: 3}
   dustVFX: {fileID: 92897003154328056}
   groundCheck: {fileID: 2465344323351189642}
   groundLayer:

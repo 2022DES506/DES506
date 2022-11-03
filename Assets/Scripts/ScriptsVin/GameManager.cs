@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject BGLap1, BGLap2, BGLap3;
     [SerializeField]
-    private GameObject CamGR, CamGL; 
+    private GameObject CamGR, CamGRb, CamGL, CamGLb; 
 
     [SerializeField]
     private GameObject Background;
@@ -50,6 +50,7 @@ public class GameManager : MonoBehaviour
 
     public Vector2 playerPos; // 角色实时位置
     public int playerDir;  // 角色实时方向
+    public bool isSpeedUp; 
 
     public bool layerChangeLock;
 
@@ -92,12 +93,32 @@ public class GameManager : MonoBehaviour
         switch (playerDir)
         {
             case 1:
-                CamGR.SetActive(true);
-                CamGL.SetActive(false); 
+                if (isSpeedUp)
+                {
+                    CamGR.SetActive(false); 
+                    CamGRb.SetActive(true);
+                }
+                else
+                {
+                    CamGR.SetActive(true);
+                    CamGRb.SetActive(false); 
+                }
+                CamGL.SetActive(false);
+                CamGLb.SetActive(false); 
                 break;
             case -1:
+                if (isSpeedUp)
+                {
+                    CamGL.SetActive(false);
+                    CamGLb.SetActive(true);
+                }
+                else
+                {
+                    CamGL.SetActive(true); 
+                    CamGLb.SetActive(false);
+                }
                 CamGR.SetActive(false);
-                CamGL.SetActive(true); 
+                CamGRb.SetActive(false); 
                 break;
             default:
                 break;

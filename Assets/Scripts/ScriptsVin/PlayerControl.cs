@@ -27,7 +27,7 @@ public class PlayerControl : MonoBehaviour
     [SerializeField]
     private float levelStart, levelHeight; // 最底层高度和每层高度
     [SerializeField]
-    private GameObject ghostPrefab;   // 幽灵预制体
+    private GameObject ghostPrefab, ghostPrefab2;   // 幽灵预制体
     [SerializeField]
     private float flyForce;                       // 起飞力度
     [SerializeField]
@@ -53,7 +53,9 @@ public class PlayerControl : MonoBehaviour
     [SerializeField]
     private GhostRecorder gr;            // 幽灵留影机
     [SerializeField]
-    private LayerMask BgcLayer; 
+    private LayerMask BgcLayer;
+    [SerializeField]
+    private GameObject airPlane1, airPlane2, airPlane3; 
 
     // 当前状态变量
     private bool isGround;                      // 是否在地面上  
@@ -214,7 +216,7 @@ public class PlayerControl : MonoBehaviour
                     canSpawn = false; 
                     break;
                 case 3:
-                    _ghost = Instantiate(ghostPrefab, transform.position, Quaternion.identity);
+                    _ghost = Instantiate(ghostPrefab2, transform.position, Quaternion.identity);
                     _ghost.GetComponent<GhostActor>().recorder = gr; 
                     _arrow = Instantiate(arrowPrefab, transform.position, Quaternion.identity, transform);
                     _arrow.GetComponent<Arrow>().tarGhost = _ghost; 
@@ -538,7 +540,17 @@ public class PlayerControl : MonoBehaviour
         if (collision.tag == "LapCheck")
         {
             GameManager.GM.curLap++;
-            canSpawn = true; 
+            canSpawn = true;
+
+            if (GameManager.GM.curLap == 2)
+            {
+                anim.SetBool("isTwo", true);
+            }
+            if (GameManager.GM.curLap == 3)
+            {
+                anim.SetBool("isTwo", false);
+                anim.SetBool("isThree", true);
+            }
         }
 
         // 撞门结算
@@ -557,10 +569,57 @@ public class PlayerControl : MonoBehaviour
             if (isFlying)
             {
                 speedBeforeFly = curSpeed;
+
+                sr.enabled = false; 
+
+                switch (GameManager.GM.curLap)
+                {
+                    case 1:
+                        airPlane1.SetActive(true); 
+                        if (curDirection < 0)
+                        {
+                            airPlane1.GetComponent<SpriteRenderer>().flipX = true; 
+                        }
+                        else
+                        {
+                            airPlane1.GetComponent<SpriteRenderer>().flipX = false; 
+                        }
+                        break;
+                    case 2:
+                        airPlane2.SetActive(true);
+                        if (curDirection < 0)
+                        {
+                            airPlane2.GetComponent<SpriteRenderer>().flipX = true; 
+                        }
+                        else
+                        {
+                            airPlane2.GetComponent<SpriteRenderer>().flipX = false; 
+                        }
+                        break;
+                    case 3:
+                        airPlane3.SetActive(true);
+                        if (curDirection < 0)
+                        {
+                            airPlane3.GetComponent<SpriteRenderer>().flipX = true; 
+                        }
+                        else
+                        {
+                            airPlane3.GetComponent<SpriteRenderer>().flipX = false; 
+                        }
+                        break; 
+                    default:
+                        break;
+                }
             }
             else
             {
-                curSpeed = speedBeforeFly; 
+                curSpeed = speedBeforeFly;
+
+                sr.enabled = true; 
+
+                airPlane1.SetActive(false);
+                airPlane2.SetActive(false);
+                airPlane3.SetActive(false); 
             }
 
             SoundManager.SM.PlayBoost();

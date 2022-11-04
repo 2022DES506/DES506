@@ -35,7 +35,13 @@ public class PlayerControl : MonoBehaviour
     [SerializeField]
     private float hDown, hRight1, hRight2, hRight3, hRight4, hUp, hLeft4, hLeft3, hLeft2, hLeft1;
     [SerializeField]
-    private GameObject arrowPrefab; 
+    private GameObject arrowPrefab;
+    [SerializeField]
+    private float nextRingCD;
+    [SerializeField]
+    private float ringSpawnRange;
+    [SerializeField]
+    private float ringPosFix; 
 
     // 组件
     private Rigidbody2D rb;                // 刚体
@@ -55,7 +61,9 @@ public class PlayerControl : MonoBehaviour
     [SerializeField]
     private LayerMask BgcLayer;
     [SerializeField]
-    private GameObject airPlane1, airPlane2, airPlane3; 
+    private GameObject airPlane1, airPlane2, airPlane3;
+    [SerializeField]
+    private GameObject RingPrefab;  // 背景圆圈预制体
 
     // 当前状态变量
     private bool isGround;                      // 是否在地面上  
@@ -75,6 +83,8 @@ public class PlayerControl : MonoBehaviour
     private float curJumpStart;               // 当前跳跃高度
     private float speedBeforeFly;            // 记录进入飞行域之前的速度
 
+    private float curRingTimer; 
+
     private void Start()
     {
         // 获取自身组件
@@ -93,6 +103,7 @@ public class PlayerControl : MonoBehaviour
         playerControl = false;
         curKeys = 0;
         isFlying = false;
+        curRingTimer = nextRingCD; 
 
         Invoke("StartRun", 3f); // 3秒后执行StartRun
     }
@@ -106,6 +117,7 @@ public class PlayerControl : MonoBehaviour
     {
         if (!playerControl) return;
 
+        BackgroundRing(); 
         // BackgroundChangeCheck(); 
         JumpHeightCheck(); // 控制跳跃高度
         LapCheck();       // 不同圈数生成幽灵
@@ -117,6 +129,17 @@ public class PlayerControl : MonoBehaviour
         SpeedCheck();   // 速度的线性变化
         DataToManager(); // 传递自身信息给Manager
 
+    }
+
+    private void BackgroundRing()
+    {
+        curRingTimer -= Time.deltaTime; 
+        if (curRingTimer <= 0 )
+        {
+            Vector2 _spawnPos = new Vector2(transform.position.x + curDirection * ringPosFix, transform.position.y) + Random.insideUnitCircle * ringSpawnRange;  
+            Instantiate(RingPrefab, _spawnPos, Quaternion.identity);  
+            curRingTimer = nextRingCD; 
+        }
     }
 
     private void LayerCheck()
@@ -433,7 +456,11 @@ public class PlayerControl : MonoBehaviour
             }
             else
             {
-                rb.velocity += Vector2.up * Physics2D.gravity.y * (fallAddition - 1) * Time.fixedDeltaTime;
+                if (Mathf.Abs(rb.velocity.y) < 20f) 
+                {
+                    Debug.Log("下落速度" + rb.velocity.y); 
+                    rb.velocity += Vector2.up * Physics2D.gravity.y * (fallAddition - 1) * Time.fixedDeltaTime;
+                }
             }
         }
         else if (rb.velocity.y > 0 && !jumpHold) 

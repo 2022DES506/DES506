@@ -4949,12 +4949,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1315af7b27672734a9b0cab8edb53fbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dashSpeed: 300
-  dashSpeedFast: 600
+  dashSpeed: 450
+  dashSpeedFast: 620
   dashSpeedSlow: 200
   jumpForce: 20
   superJumpForce: 40
-  speedChangeCD: 0.6
+  speedChangeCD: 0.75
   speedChangeRate: 0.98
   superJumpHeight: 15
   superJumpLength: 4
@@ -4980,6 +4980,9 @@ MonoBehaviour:
   hLeft2: 45
   hLeft1: 29
   arrowPrefab: {fileID: 2472989919474917806, guid: 163a2a96d47481549ad1b36550aaa599, type: 3}
+  nextRingCD: 0.2
+  ringSpawnRange: 10
+  ringPosFix: 10
   dustVFX: {fileID: 92897003154328056}
   groundCheck: {fileID: 2465344323351189642}
   groundLayer:
@@ -5010,6 +5013,7 @@ MonoBehaviour:
   airPlane1: {fileID: 1170896668156984477}
   airPlane2: {fileID: 3739622206667179099}
   airPlane3: {fileID: 3300529097338563258}
+  RingPrefab: {fileID: 3910639980720074977, guid: 5591c9fb298e07b4c90b34adf8336b5c, type: 3}
   curKeys: 0
 --- !u!114 &493455264
 MonoBehaviour:

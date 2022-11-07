@@ -64,6 +64,8 @@ public class PlayerControl : MonoBehaviour
     private GameObject airPlane1, airPlane2, airPlane3;
     [SerializeField]
     private GameObject RingPrefab;  // 背景圆圈预制体
+    [SerializeField]
+    private GameObject blackBG;      // 黑色背景
 
     // 当前状态变量
     private bool isGround;                      // 是否在地面上  
@@ -83,7 +85,7 @@ public class PlayerControl : MonoBehaviour
     private float curJumpStart;               // 当前跳跃高度
     private float speedBeforeFly;            // 记录进入飞行域之前的速度
 
-    private float curRingTimer; 
+    private float curRingTimer;
 
     private void Start()
     {
@@ -595,6 +597,8 @@ public class PlayerControl : MonoBehaviour
             isFlying = !isFlying; 
             if (isFlying)
             {
+                blackBG.SetActive(true); 
+
                 speedBeforeFly = curSpeed;
 
                 sr.enabled = false; 
@@ -640,6 +644,8 @@ public class PlayerControl : MonoBehaviour
             }
             else
             {
+                blackBG.SetActive(false); 
+
                 curSpeed = speedBeforeFly;
 
                 sr.enabled = true; 

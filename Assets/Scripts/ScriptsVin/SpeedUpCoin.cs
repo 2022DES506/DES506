@@ -6,7 +6,9 @@ public class SpeedUpCoin : MonoBehaviour
 {
     [SerializeField]
     private float defTimer;
-    private SpriteRenderer sr; 
+    private SpriteRenderer sr;
+    [SerializeField]
+    private GameObject CoinCollAnimPrefab;
 
     private float curTimer;
 
@@ -20,7 +22,7 @@ public class SpeedUpCoin : MonoBehaviour
     {
         if (curTimer > 0)
         {
-            sr.enabled = false; 
+            sr.enabled = false;
 
             curTimer -= Time.deltaTime; 
             if (curTimer <= 0)
@@ -35,6 +37,7 @@ public class SpeedUpCoin : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
+            Instantiate(CoinCollAnimPrefab, transform.position, Quaternion.identity);
             curTimer = defTimer; 
         }
     }

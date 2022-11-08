@@ -84,8 +84,8 @@ public class PlayerControl : MonoBehaviour
     private bool isJumping;                    // 是否处于起跳过程
     private float curJumpStart;               // 当前跳跃高度
     private float speedBeforeFly;            // 记录进入飞行域之前的速度
-
     private float curRingTimer;
+    public bool isSpeedUping; 
 
     private void Start()
     {
@@ -360,7 +360,8 @@ public class PlayerControl : MonoBehaviour
                 }
             }
 
-            GameManager.GM.isSpeedUp = false; 
+            GameManager.GM.isSpeedUp = false;
+            isSpeedUping = false; 
         }
         else
         {
@@ -548,7 +549,8 @@ public class PlayerControl : MonoBehaviour
 
             SoundManager.SM.PlaySpeedUp();
 
-            GameManager.GM.isSpeedUp = true; 
+            GameManager.GM.isSpeedUp = true;
+            isSpeedUping = true; 
 
             // Destroy(collision.gameObject); 
         }
@@ -562,7 +564,8 @@ public class PlayerControl : MonoBehaviour
 
             SoundManager.SM.PlaySlowdown();
 
-            GameManager.GM.isSpeedUp = false; 
+            GameManager.GM.isSpeedUp = false;
+            isSpeedUping = false; 
         }
 
         // 圈数记录

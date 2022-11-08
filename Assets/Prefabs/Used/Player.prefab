@@ -4819,6 +4819,7 @@ GameObject:
   - component: {fileID: 92897004215128013}
   - component: {fileID: 493455264}
   - component: {fileID: 5702917926338837157}
+  - component: {fileID: 4758417379072198054}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -5015,6 +5016,7 @@ MonoBehaviour:
   airPlane2: {fileID: 3739622206667179099}
   airPlane3: {fileID: 3300529097338563258}
   RingPrefab: {fileID: 3910639980720074977, guid: 5591c9fb298e07b4c90b34adf8336b5c, type: 3}
+  blackBG: {fileID: 0}
   curKeys: 0
 --- !u!114 &493455264
 MonoBehaviour:
@@ -5045,6 +5047,20 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.98
+--- !u!114 &4758417379072198054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 92897004215128019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff818deb9c7c3ec4ab53c8acd0e2ebc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startTimeBtwSpawns: 0.05
+  echoPrefab: {fileID: 2460091048643928093, guid: 1024446d5491fef47a1f85515502ad25, type: 3}
 --- !u!1 &92897004300292622
 GameObject:
   m_ObjectHideFlags: 0

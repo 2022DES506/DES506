@@ -658,7 +658,7 @@ public class PlayerControl : MonoBehaviour
                 airPlane3.SetActive(false); 
             }
 
-            SoundManager.SM.PlayBoost();
+            SoundManager.SM.PlayPortal();
         }
 
     }

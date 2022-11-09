@@ -20,15 +20,20 @@ public class SpeedUpCoin : MonoBehaviour
 
     private void Update()
     {
+        // CoinRespawn(); 
+    }
+
+    private void CoinRespawn()
+    {
         if (curTimer > 0)
         {
             sr.enabled = false;
 
-            curTimer -= Time.deltaTime; 
+            curTimer -= Time.deltaTime;
             if (curTimer <= 0)
             {
                 curTimer = 0;
-                sr.enabled = true; 
+                sr.enabled = true;
             }
         }
     }
@@ -38,7 +43,8 @@ public class SpeedUpCoin : MonoBehaviour
         if (collision.tag == "Player")
         {
             Instantiate(CoinCollAnimPrefab, transform.position, Quaternion.identity);
-            curTimer = defTimer; 
+            curTimer = defTimer;
+            Destroy(gameObject);
         }
     }
 }

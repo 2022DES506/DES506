@@ -66,6 +66,8 @@ public class PlayerControl : MonoBehaviour
     private GameObject RingPrefab;  // 背景圆圈预制体
     [SerializeField]
     private GameObject blackBG;      // 黑色背景
+    [SerializeField]
+    private GameObject point; 
 
     // 当前状态变量
     private bool isGround;                      // 是否在地面上  
@@ -93,7 +95,7 @@ public class PlayerControl : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
-        gr = GetComponent<GhostRecorder>(); 
+        gr = GetComponent<GhostRecorder>();
 
         // 必要的变量初始化
         // 速度、方向、速度状态的初始化
@@ -550,7 +552,9 @@ public class PlayerControl : MonoBehaviour
             SoundManager.SM.PlaySpeedUp();
 
             GameManager.GM.isSpeedUp = true;
-            isSpeedUping = true; 
+            isSpeedUping = true;
+
+            point.GetComponent<Animator>().SetTrigger("Change");
 
             // Destroy(collision.gameObject); 
         }

@@ -67,7 +67,9 @@ public class PlayerControl : MonoBehaviour
     [SerializeField]
     private GameObject blackBG;      // 黑色背景
     [SerializeField]
-    private GameObject point; 
+    private GameObject point;
+    [SerializeField]
+    private GameObject lap;
 
     // 当前状态变量
     private bool isGround;                      // 是否在地面上  
@@ -587,6 +589,8 @@ public class PlayerControl : MonoBehaviour
                 anim.SetBool("isTwo", false);
                 anim.SetBool("isThree", true);
             }
+
+            lap.GetComponent<Animator>().SetTrigger("Change");
         }
 
         // 撞门结算

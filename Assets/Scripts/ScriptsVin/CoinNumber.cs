@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class CoinNumber : MonoBehaviour
 {
-
     private Text coinNumber;
     public Animator animator;
 
@@ -17,6 +16,5 @@ public class CoinNumber : MonoBehaviour
     private void Update()
     {
         coinNumber.text = GameManager.GM.curCoins.ToString();
-        // animator.SetTrigger("Change");
     }
 }

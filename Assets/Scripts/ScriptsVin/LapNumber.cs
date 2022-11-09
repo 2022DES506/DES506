@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class LapNumber : MonoBehaviour
 {
     private Text lapNumber;
+    public Animator animator;
 
     private void Start()
     {
@@ -14,6 +15,6 @@ public class LapNumber : MonoBehaviour
 
     private void Update()
     {
-        lapNumber.text = GameManager.GM.curLap.ToString(); 
+        lapNumber.text = GameManager.GM.curLap.ToString();
     }
 }

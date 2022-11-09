@@ -8,9 +8,9 @@ public class CoinFollowMe : MonoBehaviour
     [SerializeField]
     private float speed = 0.1f;
     [SerializeField]
-    private float height = 10f; 
+    private float height = 4f; 
     [SerializeField]
-    private float timer = 0.5f; 
+    private float timer = 0.2f; 
     [SerializeField]
     private float minDist = 0.1f;
 

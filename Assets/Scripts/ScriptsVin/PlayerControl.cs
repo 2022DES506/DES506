@@ -70,6 +70,8 @@ public class PlayerControl : MonoBehaviour
     private GameObject point;
     [SerializeField]
     private GameObject lap;
+    [SerializeField]
+    private AudioSource Portal;
 
     // 当前状态变量
     private bool isGround;                      // 是否在地面上  
@@ -665,7 +667,8 @@ public class PlayerControl : MonoBehaviour
                 airPlane3.SetActive(false); 
             }
 
-            SoundManager.SM.PlayPortal();
+            Portal.Play();
+            
         }
 
     }

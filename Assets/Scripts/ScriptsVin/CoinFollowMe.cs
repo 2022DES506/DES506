@@ -6,11 +6,11 @@ public class CoinFollowMe : MonoBehaviour
 {
 
     [SerializeField]
-    private float speed = 0.1f;
+    private float speed = 25f;
     [SerializeField]
-    private float height = 4f; 
+    private float height = 3f; 
     [SerializeField]
-    private float timer = 0.2f; 
+    private float timer = 0.15f; 
     [SerializeField]
     private float minDist = 0.1f;
 
@@ -26,13 +26,13 @@ public class CoinFollowMe : MonoBehaviour
         if (timer > 0)
         {
             timer -= Time.deltaTime;
-            transform.position = Vector2.MoveTowards(transform.position, endPos, speed);  
+            transform.position = Vector2.MoveTowards(transform.position, endPos, speed * Time.deltaTime);  
         }
         else
         {
             if (((Vector2)transform.position - GameManager.GM.playerPos).magnitude > minDist)
             {
-                transform.position = Vector2.MoveTowards(transform.position, GameManager.GM.playerPos, speed);
+                transform.position = Vector2.MoveTowards(transform.position, GameManager.GM.playerPos, speed * Time.deltaTime);
             }
             else
             {

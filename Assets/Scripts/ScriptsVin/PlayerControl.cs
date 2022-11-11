@@ -72,6 +72,8 @@ public class PlayerControl : MonoBehaviour
     private GameObject lap;
     [SerializeField]
     private AudioSource Portal;
+    [SerializeField]
+    private AudioSource Spike;
 
     // 当前状态变量
     private bool isGround;                      // 是否在地面上  
@@ -570,7 +572,7 @@ public class PlayerControl : MonoBehaviour
             curSpeedChangeCD = speedChangeCD; 
             curSpeedState = -1;
 
-            SoundManager.SM.PlaySlowdown();
+            Spike.Play();
 
             GameManager.GM.isSpeedUp = false;
             isSpeedUping = false; 
@@ -600,7 +602,8 @@ public class PlayerControl : MonoBehaviour
         {
             if (curKeys == 3)
             {
-                GameManager.GM.ShowGameDone(); 
+                GameManager.GM.ShowGameDone();
+                SoundManager.SM.PauseBGM();
             }
         }
 

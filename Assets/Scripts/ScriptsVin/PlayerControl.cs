@@ -465,7 +465,6 @@ public class PlayerControl : MonoBehaviour
             {
                 if (Mathf.Abs(rb.velocity.y) < 20f) 
                 {
-                    Debug.Log("ÏÂÂäËÙ¶È" + rb.velocity.y); 
                     rb.velocity += Vector2.up * Physics2D.gravity.y * (fallAddition - 1) * Time.fixedDeltaTime;
                 }
             }

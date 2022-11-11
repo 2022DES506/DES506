@@ -8,7 +8,7 @@ public class EchoEffect : MonoBehaviour
     [SerializeField]
     private float startTimeBtwSpawns;
     [SerializeField]
-    private GameObject echoPrefab;
+    private GameObject echoPrefab1, echoPrefab2, echoPrefab3; 
     private PlayerControl player;
 
     private void Start()
@@ -22,7 +22,7 @@ public class EchoEffect : MonoBehaviour
         {
             if (timeBtwSpawns <= 0)
             {
-                GameObject _echo = Instantiate(echoPrefab, transform.position, Quaternion.identity);
+                GameObject _echo = Instantiate(echoPrefab1, transform.position, Quaternion.identity);
                 Destroy(_echo, 2f);
                 timeBtwSpawns = startTimeBtwSpawns;
             }

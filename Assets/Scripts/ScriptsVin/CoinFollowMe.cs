@@ -26,12 +26,14 @@ public class CoinFollowMe : MonoBehaviour
         if (timer > 0)
         {
             timer -= Time.deltaTime;
+
             transform.position = Vector2.MoveTowards(transform.position, endPos, speed * Time.deltaTime);  
         }
         else
         {
             if (((Vector2)transform.position - GameManager.GM.playerPos).magnitude > minDist)
             {
+
                 transform.position = Vector2.MoveTowards(transform.position, GameManager.GM.playerPos, speed * Time.deltaTime);
             }
             else

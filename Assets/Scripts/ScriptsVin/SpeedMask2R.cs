@@ -22,6 +22,7 @@ public class SpeedMask2R : MonoBehaviour
         {
             anim.SetBool("isUping", false);
             anim.SetBool("isStartEnd", false);
+            Debug.Log("Slow!!!!!" + anim.GetBool("isUping"));
         }
 
     }

@@ -14,8 +14,6 @@ public class SoundManager : MonoBehaviour
     [SerializeField]
     private AudioClip jump, pickup, trampoline, key;
     [SerializeField]
-    private AudioClip Slowdown, portal;
-    [SerializeField]
     private AudioClip backgroundMusic; 
 
     private void OnEnable()
@@ -30,6 +28,12 @@ public class SoundManager : MonoBehaviour
     {
         bgmAudioSource.clip = backgroundMusic;
         bgmAudioSource.Play(); 
+    }
+
+    public void PauseBGM()
+    {
+        bgmAudioSource.clip = backgroundMusic;
+        bgmAudioSource.Pause();
     }
 
     public void PlayJump()
@@ -53,18 +57,6 @@ public class SoundManager : MonoBehaviour
     public void PlayKeyGrab()
     {
         audioSource.clip = key;
-        audioSource.Play();
-    }
-
-    public void PlaySlowdown()
-    {
-        audioSource.clip = Slowdown;
-        audioSource.Play();
-    }
-
-    public void PlayPortal()
-    {
-        audioSource.clip = portal;
         audioSource.Play();
     }
 }

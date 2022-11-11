@@ -5020,7 +5020,6 @@ MonoBehaviour:
   point: {fileID: 0}
   lap: {fileID: 0}
   Portal: {fileID: 0}
-  Spike: {fileID: 0}
   curKeys: 0
   isSpeedUping: 0
 --- !u!114 &493455264
@@ -5139,7 +5138,7 @@ TrailRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -190403807
   m_SortingLayer: 1
-  m_SortingOrder: -1
+  m_SortingOrder: -10
   m_Time: 0.3
   m_Parameters:
     serializedVersion: 3

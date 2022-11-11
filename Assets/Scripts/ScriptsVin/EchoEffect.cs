@@ -22,8 +22,37 @@ public class EchoEffect : MonoBehaviour
         {
             if (timeBtwSpawns <= 0)
             {
-                GameObject _echo = Instantiate(echoPrefab1, transform.position, Quaternion.identity);
-                Destroy(_echo, 2f);
+                GameObject _echo;
+                switch (GameManager.GM.curLap)
+                {
+                    case 1:
+                        _echo = Instantiate(echoPrefab1, transform.position, Quaternion.identity);
+                        if (GameManager.GM.playerDir == -1)
+                        {
+                            _echo.GetComponent<SpriteRenderer>().flipX = true; 
+                        }
+                        Destroy(_echo, 2f);
+                        break;
+                    case 2:
+                        _echo = Instantiate(echoPrefab2, transform.position, Quaternion.identity);
+                        if (GameManager.GM.playerDir == -1)
+                        {
+                            _echo.GetComponent<SpriteRenderer>().flipX = true;
+                        }
+                        Destroy(_echo, 2f);
+                        break;
+                    case 3:
+                        _echo = Instantiate(echoPrefab3, transform.position, Quaternion.identity);
+                        if (GameManager.GM.playerDir == -1)
+                        {
+                            _echo.GetComponent<SpriteRenderer>().flipX = true;
+                        }
+                        Destroy(_echo, 2f);
+                        break;
+                    default:
+                        break; 
+                }
+                
                 timeBtwSpawns = startTimeBtwSpawns;
             }
             else

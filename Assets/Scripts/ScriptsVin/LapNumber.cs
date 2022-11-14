@@ -15,6 +15,9 @@ public class LapNumber : MonoBehaviour
 
     private void Update()
     {
-        lapNumber.text = GameManager.GM.curLap.ToString();
+        if (GameManager.GM.curLap != 4)
+        {
+            lapNumber.text = GameManager.GM.curLap.ToString(); 
+        }
     }
 }

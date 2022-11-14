@@ -78,7 +78,7 @@ public class PlayerControl : MonoBehaviour
     private AudioSource jump;
 
     // 当前状态变量
-    private bool isGround;                      // 是否在地面上  
+    public bool isGround;                      // 是否在地面上  
     private bool jumpHold;                     // 是否在长按跳跃
     private int curDirection;                    // 当前方向
     private float curSpeed;                      // 当前速度
@@ -91,7 +91,7 @@ public class PlayerControl : MonoBehaviour
     [SerializeField]
     private int curKeys;                           // 钥匙数量
     private bool isFlying;                        // 是否可以连跳
-    private bool isJumping;                    // 是否处于起跳过程
+    public bool isJumping;                    // 是否处于起跳过程
     private float curJumpStart;               // 当前跳跃高度
     private float speedBeforeFly;            // 记录进入飞行域之前的速度
     private float curRingTimer;

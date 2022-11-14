@@ -4820,6 +4820,7 @@ GameObject:
   - component: {fileID: 493455264}
   - component: {fileID: 5702917926338837157}
   - component: {fileID: 4758417379072198054}
+  - component: {fileID: 2345611440314522484}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -5021,6 +5022,7 @@ MonoBehaviour:
   lap: {fileID: 0}
   Portal: {fileID: 0}
   Spike: {fileID: 0}
+  jump: {fileID: 0}
   curKeys: 0
   isSpeedUping: 0
 --- !u!114 &493455264
@@ -5068,6 +5070,18 @@ MonoBehaviour:
   echoPrefab1: {fileID: 2460091048643928093, guid: 1024446d5491fef47a1f85515502ad25, type: 3}
   echoPrefab2: {fileID: 2460091048643928093, guid: 5e503d6c81ddbb64c8dda8f8faa1c6ee, type: 3}
   echoPrefab3: {fileID: 2460091048643928093, guid: 5d44a2c623c14274a9d15fb3d586668c, type: 3}
+--- !u!114 &2345611440314522484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 92897004215128019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf01cd35399607e469ad9ed0908dc7a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &92897004300292622
 GameObject:
   m_ObjectHideFlags: 0

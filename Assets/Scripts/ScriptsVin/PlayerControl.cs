@@ -74,6 +74,8 @@ public class PlayerControl : MonoBehaviour
     private AudioSource Portal;
     [SerializeField]
     private AudioSource Spike;
+    [SerializeField]
+    private AudioSource jump;
 
     // 当前状态变量
     private bool isGround;                      // 是否在地面上  
@@ -334,7 +336,7 @@ public class PlayerControl : MonoBehaviour
             {
                 rb.velocity += Vector2.up * flyForce;      // 起跳速度
                 dustVFX.Play();                                        // 扬尘特效
-                SoundManager.SM.PlayJump();              // 跳跃音效
+                jump.Play();             // 跳跃音效
             }
         }
         else
@@ -344,7 +346,7 @@ public class PlayerControl : MonoBehaviour
                 // 在地面上按下跳跃一瞬间
                 rb.velocity += Vector2.up * jumpForce; // 起跳速度
                 dustVFX.Play();                                        // 扬尘特效
-                SoundManager.SM.PlayJump();              // 跳跃音效
+                jump.Play();              // 跳跃音效
 
                 isJumping = true;
                 curJumpStart = transform.position.y;  

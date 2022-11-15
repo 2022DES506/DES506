@@ -927,8 +927,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -28}
-  m_SizeDelta: {x: 342.9092, y: 47.4858}
+  m_AnchoredPosition: {x: -0.000013351, y: -8.3672}
+  m_SizeDelta: {x: 378.7103, y: 82.264}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &146855468
 MonoBehaviour:
@@ -952,10 +952,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 7fc6cf6f8eb9cc94cb324be7c7cbcd3c, type: 3}
-    m_FontSize: 45
+    m_FontSize: 35
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 4
+    m_MinSize: 3
     m_MaxSize: 80
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -963,7 +963,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: How To Play
+  m_Text: Avoid Spikes or You'll Slow Down
 --- !u!222 &146855469
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1241,7 +1241,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -12.0555}
+  m_AnchoredPosition: {x: 0, y: -19}
   m_SizeDelta: {x: 404.9323, y: 258.8486}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &166069497
@@ -1316,8 +1316,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -28}
-  m_SizeDelta: {x: 342.9092, y: 47.4858}
+  m_AnchoredPosition: {x: 0, y: -8.3671}
+  m_SizeDelta: {x: 342.9092, y: 82.264}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &191547609
 MonoBehaviour:
@@ -1341,10 +1341,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 7fc6cf6f8eb9cc94cb324be7c7cbcd3c, type: 3}
-    m_FontSize: 45
+    m_FontSize: 35
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 4
+    m_MinSize: 0
     m_MaxSize: 80
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -1352,7 +1352,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: How To Play
+  m_Text: Collect Coins to Speed Up
 --- !u!222 &191547610
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1525,8 +1525,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -28}
-  m_SizeDelta: {x: 342.9092, y: 47.4858}
+  m_AnchoredPosition: {x: 0.80924, y: -8.5055}
+  m_SizeDelta: {x: 435.299, y: 87.79}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &235265145
 MonoBehaviour:
@@ -1550,10 +1550,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 7fc6cf6f8eb9cc94cb324be7c7cbcd3c, type: 3}
-    m_FontSize: 45
+    m_FontSize: 35
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 4
+    m_MinSize: 3
     m_MaxSize: 80
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -1561,7 +1561,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: How To Play
+  m_Text: Collect Keys at the end of the course
 --- !u!222 &235265146
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2109,8 +2109,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -28}
-  m_SizeDelta: {x: 342.9092, y: 47.4858}
+  m_AnchoredPosition: {x: 0, y: -10}
+  m_SizeDelta: {x: 342.9092, y: 80.631}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &315035709
 MonoBehaviour:
@@ -2134,10 +2134,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 7fc6cf6f8eb9cc94cb324be7c7cbcd3c, type: 3}
-    m_FontSize: 45
+    m_FontSize: 35
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 4
+    m_MinSize: 3
     m_MaxSize: 80
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -2145,7 +2145,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: How To Play
+  m_Text: Tap Space to Jump
 --- !u!222 &315035710
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2412,8 +2412,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -28}
-  m_SizeDelta: {x: 342.9092, y: 47.4858}
+  m_AnchoredPosition: {x: 0, y: -6.0573}
+  m_SizeDelta: {x: 496.5073, y: 81.733}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &427411589
 MonoBehaviour:
@@ -2437,10 +2437,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 7fc6cf6f8eb9cc94cb324be7c7cbcd3c, type: 3}
-    m_FontSize: 45
+    m_FontSize: 35
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 4
+    m_MinSize: 3
     m_MaxSize: 80
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -2448,7 +2448,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: How To Play
+  m_Text: A Ghost will show up after completing a lap
 --- !u!222 &427411590
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2818,7 +2818,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000005722, y: -14.0287}
+  m_AnchoredPosition: {x: 0.000005722, y: -22.534}
   m_SizeDelta: {x: 433.6805, y: 268.4769}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &539269165
@@ -3083,7 +3083,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000005722, y: -14.0287}
+  m_AnchoredPosition: {x: 0.000005722, y: -22.539}
   m_SizeDelta: {x: 433.6805, y: 268.4769}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &609791706
@@ -4678,8 +4678,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -28}
-  m_SizeDelta: {x: 342.9092, y: 47.4858}
+  m_AnchoredPosition: {x: -0.0000069141, y: -8}
+  m_SizeDelta: {x: 515.9, y: 82.888}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &953033100
 MonoBehaviour:
@@ -4703,10 +4703,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 7fc6cf6f8eb9cc94cb324be7c7cbcd3c, type: 3}
-    m_FontSize: 45
+    m_FontSize: 35
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 4
+    m_MinSize: 3
     m_MaxSize: 80
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -4714,7 +4714,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: How To Play
+  m_Text: Race around the course for 3 laps total
 --- !u!222 &953033101
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5153,8 +5153,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -28}
-  m_SizeDelta: {x: 342.9092, y: 47.4858}
+  m_AnchoredPosition: {x: -0.000014305, y: -5}
+  m_SizeDelta: {x: 436.4539, y: 79.8222}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1059940162
 MonoBehaviour:
@@ -5178,10 +5178,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 7fc6cf6f8eb9cc94cb324be7c7cbcd3c, type: 3}
-    m_FontSize: 45
+    m_FontSize: 35
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 4
+    m_MinSize: 3
     m_MaxSize: 80
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -5189,7 +5189,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: How To Play
+  m_Text: Trampolines let you jump higher
 --- !u!222 &1059940163
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5388,7 +5388,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000005722, y: -14.0287}
+  m_AnchoredPosition: {x: 0.000005722, y: -22.534}
   m_SizeDelta: {x: 433.6805, y: 268.4769}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1281761333
@@ -7685,7 +7685,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00038433, y: -11.1921}
+  m_AnchoredPosition: {x: -0.000012399, y: -18.419}
   m_SizeDelta: {x: 342.91, y: 274.15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1713109465
@@ -7760,8 +7760,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -28}
-  m_SizeDelta: {x: 342.9092, y: 47.4858}
+  m_AnchoredPosition: {x: -0.000015259, y: -6.9447}
+  m_SizeDelta: {x: 553.0959, y: 90.631}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1739509007
 MonoBehaviour:
@@ -7785,10 +7785,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 7fc6cf6f8eb9cc94cb324be7c7cbcd3c, type: 3}
-    m_FontSize: 45
+    m_FontSize: 35
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 4
+    m_MinSize: 3
     m_MaxSize: 80
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -7796,7 +7796,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: How To Play
+  m_Text: Character Moves forward Automatically
 --- !u!222 &1739509008
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8558,8 +8558,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -28}
-  m_SizeDelta: {x: 342.9092, y: 47.4858}
+  m_AnchoredPosition: {x: 0.0000038147, y: -11}
+  m_SizeDelta: {x: 529.9987, y: 80.578}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1970970821
 MonoBehaviour:
@@ -8583,10 +8583,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 7fc6cf6f8eb9cc94cb324be7c7cbcd3c, type: 3}
-    m_FontSize: 45
+    m_FontSize: 35
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 4
+    m_MinSize: 3
     m_MaxSize: 80
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -8594,7 +8594,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: How To Play
+  m_Text: Enter a special zone and you can keep jumping
 --- !u!222 &1970970822
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9401,7 +9401,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -12.0555}
+  m_AnchoredPosition: {x: 0, y: -19}
   m_SizeDelta: {x: 404.9323, y: 258.8486}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2105290039

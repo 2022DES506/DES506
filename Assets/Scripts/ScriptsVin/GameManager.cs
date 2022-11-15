@@ -50,7 +50,8 @@ public class GameManager : MonoBehaviour
 
     public Vector2 playerPos; // 角色实时位置
     public int playerDir;  // 角色实时方向
-    public bool isSpeedUp; 
+    public bool isSpeedUp;
+    public bool isSlowDown; 
 
     public bool layerChangeLock;
 

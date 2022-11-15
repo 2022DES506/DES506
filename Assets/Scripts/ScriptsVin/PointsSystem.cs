@@ -1,0 +1,106 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class PointsSystem : MonoBehaviour
+{
+    public static PointsSystem PS; 
+
+    private Text pointsNum;
+    private int curPoints;
+
+    [SerializeField]
+    private float NGTimer = 1f;
+    [SerializeField]
+    private float SHTimer = 2f;
+    [SerializeField]
+    private float GFTimer = 10f; 
+
+    private float curNGTimer;
+    private float curSHTimer;
+    private float curGFTimer;
+    public float curGFCoins; 
+
+    private void OnEnable()
+    {
+        if (PS == null)
+        {
+            PS = this; 
+        }
+    }
+
+    private void Start()
+    {
+        pointsNum = GetComponent<Text>();
+        curPoints = 0;
+
+        curNGTimer = NGTimer;
+        curSHTimer = SHTimer;
+        curGFTimer = GFTimer;
+        curGFCoins = 0; 
+    }
+
+    private void Update()
+    {
+        NaturalGrowth(); 
+        SpeedHold();
+        GoldFanatic(); 
+        pointsNum.text = curPoints.ToString(); 
+    }
+
+    public void AddPoints(int _num)
+    {
+        curPoints += _num; 
+    }
+
+    private void SpeedHold()
+    {
+        if (!GameManager.GM.isSpeedUp)
+        {
+            curSHTimer = SHTimer; 
+        }
+        curSHTimer -= Time.deltaTime; 
+        if (curSHTimer < 0)
+        {
+            curPoints += 500; 
+            curSHTimer = SHTimer;
+            Debug.Log("Speed Hold!"); 
+        }
+    }
+
+    private void NaturalGrowth()
+    {
+        if (GameManager.GM.isSlowDown) 
+        {
+            curNGTimer = NGTimer; 
+        }
+        curNGTimer -= Time.deltaTime; 
+        if (curNGTimer < 0)
+        {
+            curPoints += 100; 
+            curNGTimer = NGTimer; 
+        }
+    }
+
+    private void GoldFanatic()
+    {
+        curGFTimer -= Time.deltaTime; 
+        if (curGFTimer < 0)
+        {
+            curGFCoins = 0; 
+            curGFTimer = GFTimer; 
+        }
+        else
+        {
+            if (curGFCoins >= 20)
+            {
+                curPoints += 500;
+                curGFCoins = 0;
+                curGFTimer = GFTimer;
+                Debug.Log("Gold Fanatic!"); 
+            }
+        }
+
+    }
+}

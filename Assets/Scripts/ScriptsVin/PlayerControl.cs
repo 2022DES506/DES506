@@ -371,7 +371,8 @@ public class PlayerControl : MonoBehaviour
             }
 
             GameManager.GM.isSpeedUp = false;
-            isSpeedUping = false; 
+            isSpeedUping = false;
+            GameManager.GM.isSlowDown = false; 
         }
         else
         {
@@ -451,6 +452,8 @@ public class PlayerControl : MonoBehaviour
                     rb.gravityScale = 1f; // 恢复刚体重力
                     rb.velocity = new Vector2(curSpeed * curDirection * Time.fixedDeltaTime, rb.velocity.y); // 速度恢复
                     superJumpingState = 0; // 重置超级跳状态
+
+                    PointsSystem.PS.AddPoints(500); 
                 }
 
                 break;
@@ -471,7 +474,6 @@ public class PlayerControl : MonoBehaviour
             {
                 if (Mathf.Abs(rb.velocity.y) < 20f) 
                 {
-                    Debug.Log("下落速度" + rb.velocity.y); 
                     rb.velocity += Vector2.up * Physics2D.gravity.y * (fallAddition - 1) * Time.fixedDeltaTime;
                 }
             }
@@ -551,7 +553,9 @@ public class PlayerControl : MonoBehaviour
         // 加速
         if (collision.tag == "SpeedUp")
         {
-            GameManager.GM.curCoins++; 
+            GameManager.GM.curCoins++;
+            PointsSystem.PS.AddPoints(100);
+            PointsSystem.PS.curGFCoins++; 
 
             curSpeed = Mathf.Lerp(curSpeed, dashSpeedFast, speedChangeRate); 
             curSpeedChangeCD = speedChangeCD; 
@@ -561,6 +565,7 @@ public class PlayerControl : MonoBehaviour
 
             GameManager.GM.isSpeedUp = true;
             isSpeedUping = true;
+            GameManager.GM.isSlowDown = false; 
 
             point.GetComponent<Animator>().SetTrigger("Change");
 
@@ -577,7 +582,8 @@ public class PlayerControl : MonoBehaviour
             Spike.Play();
 
             GameManager.GM.isSpeedUp = false;
-            isSpeedUping = false; 
+            isSpeedUping = false;
+            GameManager.GM.isSlowDown = true; 
         }
 
         // 圈数记录

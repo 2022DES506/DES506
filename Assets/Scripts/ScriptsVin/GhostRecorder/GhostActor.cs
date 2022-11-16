@@ -120,7 +120,6 @@ public class GhostActor : MonoBehaviour
 
     public void SetFrames(List<GhostShot> frames)
     {
-        Debug.Log(frames.Count);
         foreach (var frame in frames)
         {
             this.frames.Add(frame); 

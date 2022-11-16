@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -76,6 +77,8 @@ public class PlayerControl : MonoBehaviour
     private AudioSource Spike;
     [SerializeField]
     private AudioSource jump;
+    [SerializeField]
+    private Text pointText;
 
     // 当前状态变量
     public bool isGround;                      // 是否在地面上  
@@ -104,6 +107,8 @@ public class PlayerControl : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         gr = GetComponent<GhostRecorder>();
+
+        pointText.text = "";
 
         // 必要的变量初始化
         // 速度、方向、速度状态的初始化
@@ -569,6 +574,9 @@ public class PlayerControl : MonoBehaviour
 
             point.GetComponent<Animator>().SetTrigger("Change");
 
+            pointText.text = "Coin Collected";
+
+
             // Destroy(collision.gameObject); 
         }
 
@@ -583,7 +591,9 @@ public class PlayerControl : MonoBehaviour
 
             GameManager.GM.isSpeedUp = false;
             isSpeedUping = false;
-            GameManager.GM.isSlowDown = true; 
+            GameManager.GM.isSlowDown = true;
+
+            pointText.text = "Hit Spike";
         }
 
         // 圈数记录

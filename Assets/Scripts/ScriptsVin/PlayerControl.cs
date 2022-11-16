@@ -583,7 +583,9 @@ public class PlayerControl : MonoBehaviour
 
             GameManager.GM.isSpeedUp = false;
             isSpeedUping = false;
-            GameManager.GM.isSlowDown = true; 
+            GameManager.GM.isSlowDown = true;
+
+            PointsSystem.PS.ResetCFTimer(); 
         }
 
         // È¦Êý¼ÇÂ¼

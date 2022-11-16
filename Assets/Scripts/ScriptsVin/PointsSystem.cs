@@ -15,12 +15,15 @@ public class PointsSystem : MonoBehaviour
     [SerializeField]
     private float SHTimer = 2f;
     [SerializeField]
-    private float GFTimer = 10f; 
+    private float GFTimer = 10f;
+    [SerializeField]
+    private float CFTimer = 5f;
 
-    private float curNGTimer;
-    private float curSHTimer;
-    private float curGFTimer;
-    public float curGFCoins; 
+    private float curNGTimer; 
+    private float curSHTimer; 
+    private float curGFTimer; 
+    public float curGFCoins;
+    private float curCFTimer; 
 
     private void OnEnable()
     {
@@ -38,20 +41,38 @@ public class PointsSystem : MonoBehaviour
         curNGTimer = NGTimer;
         curSHTimer = SHTimer;
         curGFTimer = GFTimer;
-        curGFCoins = 0; 
+        curGFCoins = 0;
+        curCFTimer = CFTimer; 
     }
 
     private void Update()
     {
-        NaturalGrowth(); 
+        // NaturalGrowth(); 
         SpeedHold();
         GoldFanatic(); 
-        pointsNum.text = curPoints.ToString(); 
+        pointsNum.text = curPoints.ToString();
+        CollisionFree(); 
     }
 
     public void AddPoints(int _num)
     {
         curPoints += _num; 
+    }
+
+    public void ResetCFTimer()
+    {
+        curCFTimer = CFTimer; 
+    }
+
+    private void CollisionFree()
+    {
+        curCFTimer -= Time.deltaTime; 
+        if (curCFTimer < 0)
+        {
+            curPoints += 1000; 
+            ResetCFTimer();
+            Debug.Log("CollisionFree!");  
+        }
     }
 
     private void SpeedHold()

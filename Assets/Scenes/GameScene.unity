@@ -17511,7 +17511,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NGTimer: 1
-  SHTimer: 10
+  SHTimer: 2
+  GFTimer: 10
+  CFTimer: 5
+  curGFCoins: 0
 --- !u!1001 &757879499
 PrefabInstance:
   m_ObjectHideFlags: 0

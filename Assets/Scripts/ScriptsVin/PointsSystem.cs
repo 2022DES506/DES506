@@ -23,7 +23,9 @@ public class PointsSystem : MonoBehaviour
     private float curSHTimer; 
     private float curGFTimer; 
     public float curGFCoins;
-    private float curCFTimer; 
+    private float curCFTimer;
+
+    private PlayerControl player; 
 
     private void OnEnable()
     {
@@ -36,6 +38,7 @@ public class PointsSystem : MonoBehaviour
     private void Start()
     {
         pointsNum = GetComponent<Text>();
+        player = FindObjectOfType<PlayerControl>(); 
         curPoints = 0;
 
         curNGTimer = NGTimer;
@@ -71,7 +74,8 @@ public class PointsSystem : MonoBehaviour
         {
             curPoints += 1000; 
             ResetCFTimer();
-            Debug.Log("CollisionFree!");  
+            Debug.Log("CollisionFree!");
+            player.ShowScoreMessage("CollisionFree!"); 
         }
     }
 
@@ -86,7 +90,8 @@ public class PointsSystem : MonoBehaviour
         {
             curPoints += 500; 
             curSHTimer = SHTimer;
-            Debug.Log("Speed Hold!"); 
+            Debug.Log("Speed Hold!");
+            player.ShowScoreMessage("Speed Hold!");
         }
     }
 
@@ -119,7 +124,8 @@ public class PointsSystem : MonoBehaviour
                 curPoints += 500;
                 curGFCoins = 0;
                 curGFTimer = GFTimer;
-                Debug.Log("Gold Fanatic!"); 
+                Debug.Log("Gold Fanatic!");
+                player.ShowScoreMessage("Gold Fanatic!"); 
             }
         }
 

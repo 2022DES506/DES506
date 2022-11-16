@@ -5,34 +5,33 @@ using UnityEngine.UI;
 
 public class PlayerControl : MonoBehaviour
 {
-    // �ɵ��ر���
     [SerializeField]
-    private float dashSpeed, dashSpeedFast, dashSpeedSlow; // �����ٶ�
+    private float dashSpeed, dashSpeedFast, dashSpeedSlow; 
     [SerializeField]
-    private float jumpForce, superJumpForce; // ������
+    private float jumpForce, superJumpForce; 
     [SerializeField]
-    private float speedChangeCD = 0f;                 // Ĭ���ٶȱ仯ʱ��
+    private float speedChangeCD = 0f;                 
     [SerializeField]
-    private float speedChangeRate = 1f;          // �ٶȱ仯��
-    private float speedChangeDeviation = 0.01f; // �仯���ȶ��ٶ������������ֵ��0.01f �ͺ� 
+    private float speedChangeRate = 1f;          
+    private float speedChangeDeviation = 0.01f; 
     [SerializeField]
-    private float superJumpHeight; // ���������λ��
+    private float superJumpHeight; 
     [SerializeField]
-    private float superJumpLength; // ���������γ�̾���
+    private float superJumpLength; 
     [SerializeField]
-    private float superJumpSpeed;  // ���������γ���ٶ�
+    private float superJumpSpeed;  
     [SerializeField]
-    private float fallAddition, jumpAddition; // ��غ������������ӳ�
+    private float fallAddition, jumpAddition; 
     [SerializeField]
-    private float jumpHeight, holdJumpHeight; // ������Ծ�߶ȿ���
+    private float jumpHeight, holdJumpHeight; 
     [SerializeField]
-    private float levelStart, levelHeight; // ��ײ�߶Ⱥ�ÿ��߶�
+    private float levelStart, levelHeight; 
     [SerializeField]
-    private GameObject ghostPrefab, ghostPrefab2;   // ����Ԥ����
+    private GameObject ghostPrefab, ghostPrefab2;   
     [SerializeField]
-    private float flyForce;                       // �������
+    private float flyForce;                       
     [SerializeField]
-    private float flySpeed;                      // �����ٶ�
+    private float flySpeed;                     
     [SerializeField]
     private float hDown, hRight1, hRight2, hRight3, hRight4, hUp, hLeft4, hLeft3, hLeft2, hLeft1;
     [SerializeField]
@@ -44,29 +43,28 @@ public class PlayerControl : MonoBehaviour
     [SerializeField]
     private float ringPosFix; 
 
-    // ���
-    private Rigidbody2D rb;                // ����
-    private SpriteRenderer sr;             // ������Ⱦ��
-    private Animator anim;                 // ����������
+    private Rigidbody2D rb;                
+    private SpriteRenderer sr;           
+    private Animator anim;                
     [SerializeField]
-    private ParticleSystem dustVFX;   // �ŵ׳���������Ч 
+    private ParticleSystem dustVFX;   
     [SerializeField]
-    private Transform groundCheck;  // �������
+    private Transform groundCheck;  
     [SerializeField]
-    private LayerMask groundLayer;  // ����Layer
+    private LayerMask groundLayer;  
     [SerializeField]
-    private LayerMask layerDown, layerLevel1, layerLevel2, layerLevel3, layerLevel4, layerUp; // �㼶Layer
+    private LayerMask layerDown, layerLevel1, layerLevel2, layerLevel3, layerLevel4, layerUp; 
     private Animator curSpringAni;
     [SerializeField]
-    private GhostRecorder gr;            // ������Ӱ��
+    private GhostRecorder gr;            
     [SerializeField]
     private LayerMask BgcLayer;
     [SerializeField]
     private GameObject airPlane1, airPlane2, airPlane3;
     [SerializeField]
-    private GameObject RingPrefab;  // ����ԲȦԤ����
+    private GameObject RingPrefab;  
     [SerializeField]
-    private GameObject blackBG;      // ��ɫ����
+    private GameObject blackBG;      
     [SerializeField]
     private GameObject point;
     [SerializeField]
@@ -80,29 +78,27 @@ public class PlayerControl : MonoBehaviour
     [SerializeField]
     private Text pointText;
 
-    // ��ǰ״̬����
-    public bool isGround;                      // �Ƿ��ڵ�����  
-    private bool jumpHold;                     // �Ƿ��ڳ�����Ծ
-    private int curDirection;                    // ��ǰ����
-    private float curSpeed;                      // ��ǰ�ٶ�
-    private int curSpeedState;                 // ��ǰ�ٶ�״̬��-1Ϊ���٣�0Ϊ������1Ϊ����
-    private float curSpeedChangeCD;     // ��ǰ�ٶȱ仯ʱ�䵹��ʱ��С��0ʱ�ָ�ԭ�٣����õ���ʱ
-    private float superJumpStart;            // �����������߶ȡ������㡾���á� 
-    private int superJumpingState;         // ������״̬��0Ϊ�ǳ�������1Ϊ������������2Ϊ��������� 
-    private bool canSpawn;                     // �Ƿ�������������
-    private bool playerControl;               // ��ҿ���
+    public bool isGround;                      
+    private bool jumpHold;                     
+    private int curDirection;                   
+    private float curSpeed;                      
+    private int curSpeedState;                 
+    private float curSpeedChangeCD;     
+    private float superJumpStart;            
+    private int superJumpingState;          
+    private bool canSpawn;                     
+    private bool playerControl;             
     [SerializeField]
-    private int curKeys;                           // Կ������
-    private bool isFlying;                        // �Ƿ��������
-    public bool isJumping;                    // �Ƿ�����������
-    private float curJumpStart;               // ��ǰ��Ծ�߶�
-    private float speedBeforeFly;            // ��¼���������֮ǰ���ٶ�
+    private int curKeys;                           
+    private bool isFlying;                        
+    public bool isJumping;                    
+    private float curJumpStart;              
+    private float speedBeforeFly;            
     private float curRingTimer;
     public bool isSpeedUping; 
 
     private void Start()
     {
-        // ��ȡ�������
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
@@ -110,8 +106,6 @@ public class PlayerControl : MonoBehaviour
 
         pointText.text = "";
 
-        // ��Ҫ�ı�����ʼ��
-        // �ٶȡ������ٶ�״̬�ĳ�ʼ��
         curDirection = 1;  // 1 == dash right, -1 == dash left 
         curSpeed = dashSpeed; 
         curSpeedState = 0;
@@ -122,7 +116,7 @@ public class PlayerControl : MonoBehaviour
         isFlying = false;
         curRingTimer = nextRingCD; 
 
-        Invoke("StartRun", 3f); // 3���ִ��StartRun
+        Invoke("StartRun", 3f); 
     }
 
     private void StartRun()
@@ -136,15 +130,15 @@ public class PlayerControl : MonoBehaviour
 
         BackgroundRing(); 
         // BackgroundChangeCheck(); 
-        JumpHeightCheck(); // ������Ծ�߶�
-        LapCheck();       // ��ͬȦ����������
-        LevelCheck();     // ���㵱ǰ����
-        LayerCheck();     // ���ݸ߶ȼ������
-        FlipMe();            // ��ת���
-        GroundCheck(); // ������
-        Jump();              // ��Ծ     
-        SpeedCheck();   // �ٶȵ����Ա仯
-        DataToManager(); // ����������Ϣ��Manager
+        JumpHeightCheck(); 
+        LapCheck();       
+        LevelCheck();    
+        LayerCheck();     
+        FlipMe();           
+        GroundCheck(); 
+        Jump();               
+        SpeedCheck();   
+        DataToManager(); 
 
     }
 
@@ -247,7 +241,7 @@ public class PlayerControl : MonoBehaviour
         {
             switch (GameManager.GM.curLap)
             {
-                // ���������ָʾ��ͷ
+               
                 case 2:
                     _ghost = Instantiate(ghostPrefab, transform.position, Quaternion.identity);
                     _ghost.GetComponent<GhostActor>().recorder = gr;
@@ -273,7 +267,7 @@ public class PlayerControl : MonoBehaviour
     }
     private void LevelCheck()
     {
-        // ������ײ��ȷ������
+        
         if (Physics2D.OverlapCircle(transform.position, 0.1f, layerDown))
         {
             GameManager.GM.curLevel = 0; 
@@ -299,7 +293,7 @@ public class PlayerControl : MonoBehaviour
             GameManager.GM.curLevel = 5; 
         }
 
-        /* �߶ȷ�������
+        /* 
         
         if (transform.position.y <= levelStart)
         {
@@ -339,25 +333,25 @@ public class PlayerControl : MonoBehaviour
         {
             if (Input.GetButtonDown("Jump"))
             {
-                rb.velocity += Vector2.up * flyForce;      // �����ٶ�
-                dustVFX.Play();                                        // �ﳾ��Ч
-                jump.Play();             // ��Ծ��Ч
+                rb.velocity += Vector2.up * flyForce;     
+                dustVFX.Play();                                        
+                jump.Play();             
             }
         }
         else
         {
             if (isGround && Input.GetButtonDown("Jump"))
             {
-                // �ڵ����ϰ�����Ծһ˲��
-                rb.velocity += Vector2.up * jumpForce; // �����ٶ�
-                dustVFX.Play();                                        // �ﳾ��Ч
-                jump.Play();              // ��Ծ��Ч
+                
+                rb.velocity += Vector2.up * jumpForce; 
+                dustVFX.Play();                                        
+                jump.Play();              
 
                 isJumping = true;
                 curJumpStart = transform.position.y;  
             }
         }
-        jumpHold = Input.GetButton("Jump");           // ���������������
+        jumpHold = Input.GetButton("Jump");           
     }
 
     private void SpeedCheck()
@@ -365,7 +359,7 @@ public class PlayerControl : MonoBehaviour
         curSpeedChangeCD -= Time.deltaTime;
         if (curSpeedChangeCD <= 0)
         {
-            // ����ʱ��������ٶ���������
+            
             if (curSpeed != dashSpeed)
             {
                 curSpeed = Mathf.Lerp(curSpeed, dashSpeed, speedChangeRate);
@@ -381,11 +375,11 @@ public class PlayerControl : MonoBehaviour
         }
         else
         {
-            // ����ʱδ����ʱ�������ٶ�״̬���Ըı䵱ǰ�ٶ�ֵ
+            
             switch (curSpeedState)
             {
                 case -1:
-                    // ����
+                    
                     curSpeed = Mathf.Lerp(curSpeed, dashSpeedSlow, speedChangeRate);
                     if (Mathf.Abs(curSpeed - dashSpeedSlow) < speedChangeDeviation)
                     {
@@ -393,7 +387,7 @@ public class PlayerControl : MonoBehaviour
                     }
                     break;
                 case 0:
-                    // �����٣���ʵûɶ��Ҫ
+                    
                     if (curSpeed != dashSpeed)
                     {
                         curSpeed = Mathf.Lerp(curSpeed, dashSpeed, speedChangeRate);
@@ -404,7 +398,7 @@ public class PlayerControl : MonoBehaviour
                     }
                     break;
                 case 1:
-                    // ����
+                    
                     curSpeed = Mathf.Lerp(curSpeed, dashSpeedFast, speedChangeRate);
                     if (Mathf.Abs(curSpeed - dashSpeedFast) < speedChangeDeviation)
                     {
@@ -420,9 +414,9 @@ public class PlayerControl : MonoBehaviour
     {
         if (!playerControl) return; 
 
-        BasicDash();               // ������̵��ٶȿ���
-        SuperJump();             // ��������������ٶȿ���
-        JumpOptimization(); // ��������ص��ٶ�΢��
+        BasicDash();               
+        SuperJump();             
+        JumpOptimization(); 
     }
 
     private void BasicDash()
@@ -434,30 +428,31 @@ public class PlayerControl : MonoBehaviour
         switch (superJumpingState)
         {
             case 1:
-                // ����������
+                
                 float _jumpHeight = transform.position.y - superJumpStart;
                 if (_jumpHeight >= superJumpHeight)
                 {
-                    // ������ߵ�
-                    rb.gravityScale = 0f; // ȡ����������
-                    superJumpStart = transform.position.x; // ��¼������
-                    rb.velocity = new Vector2(superJumpSpeed * curDirection * Time.fixedDeltaTime, 0); // ��ʼ���
-                    superJumpingState = 2; // ���³�����״̬
+                    
+                    rb.gravityScale = 0f; 
+                    superJumpStart = transform.position.x; 
+                    rb.velocity = new Vector2(superJumpSpeed * curDirection * Time.fixedDeltaTime, 0); 
+                    superJumpingState = 2; 
 
-                    dustVFX.Play(); // ���Žŵ׳�����Ч
+                    dustVFX.Play(); 
                 }
                 break;
             case 2:
-                // ���������
-                rb.velocity = new Vector2(superJumpSpeed * curDirection * Time.fixedDeltaTime, 0); // �������
+                
+                rb.velocity = new Vector2(superJumpSpeed * curDirection * Time.fixedDeltaTime, 0); 
                 float _jumpLength = Mathf.Abs(transform.position.x - superJumpStart);
                 if (_jumpLength >= superJumpLength)
                 {
-                    // ������յ�
-                    rb.gravityScale = 1f; // �ָ���������
-                    rb.velocity = new Vector2(curSpeed * curDirection * Time.fixedDeltaTime, rb.velocity.y); // �ٶȻָ�
-                    superJumpingState = 0; // ���ó�����״̬
+                    
+                    rb.gravityScale = 1f; 
+                    rb.velocity = new Vector2(curSpeed * curDirection * Time.fixedDeltaTime, rb.velocity.y); 
+                    superJumpingState = 0;
 
+                    ShowScoreMessage("Rise!"); 
                     PointsSystem.PS.AddPoints(500); 
                 }
 
@@ -470,7 +465,7 @@ public class PlayerControl : MonoBehaviour
     {
         if (rb.velocity.y < 0)
         {
-            // ���ʱ���ٶ����� 
+            
             if (isFlying)
             {
                 rb.velocity += Vector2.up * Physics2D.gravity.y * (jumpAddition - 1) * Time.fixedDeltaTime; 
@@ -485,12 +480,12 @@ public class PlayerControl : MonoBehaviour
         }
         else if (rb.velocity.y > 0 && !jumpHold) 
         {
-            // ����ʱ���ٶ����ƣ������򲻴�������
+            
             rb.velocity += Vector2.up * Physics2D.gravity.y * (jumpAddition - 1) * Time.fixedDeltaTime; 
         }
     }
 
-    // ��ת��ɫ����
+    
     private void FlipMe()
     {
         var _flipValue = GameManager.GM.curLevel % 2; 
@@ -517,15 +512,14 @@ public class PlayerControl : MonoBehaviour
         sr.flipX = true; 
     }
 
-    #region ��ײ�ʹ��� Collision
-    // ������ײ��
+    #region  Collision
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.tag == "Ground")
         {
             isGround = true;
 
-            rb.velocity = new Vector2(rb.velocity.x, 0f); // ��ֹ�����ٶȹ�����ɵķ�����ģ
+            rb.velocity = new Vector2(rb.velocity.x, 0f); 
 
             dustVFX.Play(); 
 
@@ -543,7 +537,7 @@ public class PlayerControl : MonoBehaviour
         }
 
     }
-    // ������ײ��
+    
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.collider.tag == "Ground")
@@ -552,10 +546,10 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
-    // ����������
+   
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // ����
+        
         if (collision.tag == "SpeedUp")
         {
             GameManager.GM.curCoins++;
@@ -574,13 +568,11 @@ public class PlayerControl : MonoBehaviour
 
             point.GetComponent<Animator>().SetTrigger("Change");
 
-            pointText.text = "Coin Collected";
+            // ShowScoreMessage("Coin Collected"); 
 
-
-            // Destroy(collision.gameObject); 
         }
 
-        // ����
+        
         if (collision.tag == "SlowDown")
         {
             curSpeed = Mathf.Lerp(curSpeed, dashSpeedSlow, speedChangeRate); 
@@ -593,10 +585,10 @@ public class PlayerControl : MonoBehaviour
             isSpeedUping = false;
             GameManager.GM.isSlowDown = true;
             PointsSystem.PS.ResetCFTimer(); 
-            pointText.text = "Hit Spike";
+            ShowScoreMessage("Hit Spike"); 
         }
 
-        // Ȧ����¼
+        
         if (collision.tag == "LapCheck")
         {
             GameManager.GM.curLap++;
@@ -615,7 +607,7 @@ public class PlayerControl : MonoBehaviour
             lap.GetComponent<Animator>().SetTrigger("Change");
         }
 
-        // ײ�Ž���
+        
         if (collision.tag == "Door")
         {
             if (curKeys == 3)
@@ -625,7 +617,7 @@ public class PlayerControl : MonoBehaviour
             }
         }
 
-        // ��������
+        
         if (collision.tag == "FlyArea")
         {
             isFlying = !isFlying; 
@@ -694,7 +686,7 @@ public class PlayerControl : MonoBehaviour
         }
 
     }
-    // ���봥����
+   
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.tag == "Key")
@@ -718,6 +710,25 @@ public class PlayerControl : MonoBehaviour
         rb.velocity = Vector2.up * superJumpForce;
 
         curSpringAni.SetBool("isSpring", true); 
+    }
+
+    public void ShowScoreMessage(string _message)
+    {
+        pointText.text = _message;
+        pointText.enabled = true;
+        Invoke("HideScoreMessage", 1f); 
+    }
+
+    public void ShowScoreMessage(string _message, float _timer)
+    {
+        pointText.text = _message;
+        pointText.enabled = true;
+        Invoke("HideScoreMessage", _timer); 
+    }
+
+    private void HideScoreMessage()
+    {
+        pointText.enabled = false; 
     }
 
 }

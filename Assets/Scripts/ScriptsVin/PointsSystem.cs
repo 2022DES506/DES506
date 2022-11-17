@@ -25,7 +25,7 @@ public class PointsSystem : MonoBehaviour
     public float curGFCoins;
     private float curCFTimer;
 
-    private PlayerControl player; 
+    private PlayerControl player;
 
     private void OnEnable()
     {
@@ -125,9 +125,8 @@ public class PointsSystem : MonoBehaviour
                 curGFCoins = 0;
                 curGFTimer = GFTimer;
                 Debug.Log("Gold Fanatic!");
-                player.ShowScoreMessage("Coin Collector!"); 
+                player.ShowScoreMessage("Coin Collector!");
             }
         }
-
     }
 }

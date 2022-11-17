@@ -74,8 +74,8 @@ public class PointsSystem : MonoBehaviour
         {
             curPoints += 1000; 
             ResetCFTimer();
-            Debug.Log("CollisionFree!");
-            player.ShowScoreMessage("CollisionFree!"); 
+            Debug.Log("Collision Free!");
+            player.ShowScoreMessage("Avoided Collision!");
         }
     }
 
@@ -91,7 +91,7 @@ public class PointsSystem : MonoBehaviour
             curPoints += 500; 
             curSHTimer = SHTimer;
             Debug.Log("Speed Hold!");
-            player.ShowScoreMessage("Speed Hold!");
+            player.ShowScoreMessage("Kept a Constant Speed!");
         }
     }
 
@@ -125,7 +125,7 @@ public class PointsSystem : MonoBehaviour
                 curGFCoins = 0;
                 curGFTimer = GFTimer;
                 Debug.Log("Gold Fanatic!");
-                player.ShowScoreMessage("Gold Fanatic!"); 
+                player.ShowScoreMessage("Coin Collector!"); 
             }
         }
 

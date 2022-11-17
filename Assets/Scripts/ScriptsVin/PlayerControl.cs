@@ -452,7 +452,7 @@ public class PlayerControl : MonoBehaviour
                     rb.velocity = new Vector2(curSpeed * curDirection * Time.fixedDeltaTime, rb.velocity.y); 
                     superJumpingState = 0;
 
-                    ShowScoreMessage("Rise!"); 
+                    ShowScoreMessage("High Jump!"); 
                     PointsSystem.PS.AddPoints(500); 
                 }
 

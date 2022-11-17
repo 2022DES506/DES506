@@ -77,6 +77,8 @@ public class PlayerControl : MonoBehaviour
     private AudioSource jump;
     [SerializeField]
     private Text pointText;
+    [SerializeField]
+    private GameObject popUpText;
 
     public bool isGround;                      
     private bool jumpHold;                     
@@ -453,7 +455,9 @@ public class PlayerControl : MonoBehaviour
                     superJumpingState = 0;
 
                     ShowScoreMessage("High Jump!"); 
-                    PointsSystem.PS.AddPoints(500); 
+                    PointsSystem.PS.AddPoints(500);
+
+                    popUpText.GetComponent<Animator>().SetTrigger("Pop Up");
                 }
 
                 break;
@@ -585,7 +589,9 @@ public class PlayerControl : MonoBehaviour
             isSpeedUping = false;
             GameManager.GM.isSlowDown = true;
             PointsSystem.PS.ResetCFTimer(); 
-            ShowScoreMessage("Hit Spike"); 
+            ShowScoreMessage("Hit Spike");
+
+            popUpText.GetComponent<Animator>().SetTrigger("Pop Up");
         }
 
         
@@ -717,6 +723,7 @@ public class PlayerControl : MonoBehaviour
         pointText.text = _message;
         pointText.enabled = true;
         Invoke("HideScoreMessage", 1f); 
+
     }
 
     public void ShowScoreMessage(string _message, float _timer)

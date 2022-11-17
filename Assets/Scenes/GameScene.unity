@@ -71363,6 +71363,7 @@ GameObject:
   - component: {fileID: 1522575289}
   - component: {fileID: 1522575288}
   - component: {fileID: 1522575287}
+  - component: {fileID: 1522575290}
   m_Layer: 5
   m_Name: PointText
   m_TagString: Untagged
@@ -71437,7 +71438,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: Text
 --- !u!222 &1522575289
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -71446,6 +71447,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1522575285}
   m_CullTransparentMesh: 1
+--- !u!95 &1522575290
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1522575285}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ba0259fc8148e8d4085f9f7422becd03, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!4 &1525098261 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5820582553040315693, guid: 6122974dd1ff5584ca4d66db6cf5527d, type: 3}
@@ -94081,6 +94101,10 @@ PrefabInstance:
       propertyPath: pointText
       value: 
       objectReference: {fileID: 1522575288}
+    - target: {fileID: 92897004215128013, guid: 8086c6ff22145054eb67568c682428b4, type: 3}
+      propertyPath: popUpText
+      value: 
+      objectReference: {fileID: 1522575285}
     - target: {fileID: 92897004215128017, guid: 8086c6ff22145054eb67568c682428b4, type: 3}
       propertyPath: m_RootOrder
       value: 5

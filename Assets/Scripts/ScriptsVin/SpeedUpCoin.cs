@@ -1,3 +1,6 @@
+//////////////////////         Script tied to coin prefab
+
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

@@ -1,3 +1,6 @@
+//////////////////////////        Follow animation after collecting gold coins
+
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

@@ -1,3 +1,5 @@
+///////////////////////          Echo effect produced by the character when accelerating
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

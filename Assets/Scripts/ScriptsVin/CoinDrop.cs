@@ -1,3 +1,6 @@
+///////////////        Destruction of dropped coins 
+
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

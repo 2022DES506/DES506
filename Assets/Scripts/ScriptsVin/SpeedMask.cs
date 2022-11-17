@@ -1,3 +1,5 @@
+////////////////////       Air hood effect when character is accelerating
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

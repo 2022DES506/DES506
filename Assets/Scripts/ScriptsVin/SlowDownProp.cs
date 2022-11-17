@@ -1,3 +1,6 @@
+/////////////////////         Random generation of dropped gold coins
+
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

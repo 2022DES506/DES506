@@ -1,3 +1,7 @@
+/////////////////////////////////                Transition logic for jump animation
+////////////////////         Temporarily deprecated, needs to be rewritten
+
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

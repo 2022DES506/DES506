@@ -1,3 +1,5 @@
+///////////////      Animation logic for the air hood when the character runs to the left
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

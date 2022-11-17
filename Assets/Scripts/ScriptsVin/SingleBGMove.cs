@@ -1,3 +1,6 @@
+//////////////////        Background move script, deprecated
+
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

@@ -27,7 +27,7 @@ public class PointsSystem : MonoBehaviour
     public float curGFCoins;
     private float curCFTimer;
 
-    private PlayerControl player;
+    private PlayerControl player; 
 
     private void OnEnable()
     {
@@ -131,4 +131,39 @@ public class PointsSystem : MonoBehaviour
             }
         }
     }
+
+    public int GetCurrentPoints()
+    {
+        return curPoints; 
+    }
+
+    // Sort RankingList in descending order 
+    public void SortRankingList(List<int> _list)
+    {
+        if (_list != null && _list.Count > 1)
+        {
+            _list.Sort();
+            _list.Reverse(); 
+        }
+    }
+
+    public void AddNewRecord()
+    {
+        List<int> _ranking = new List<int>(PlayerPrefsX.GetIntArray("ranking")); 
+        int _score = PointsSystem.PS.GetCurrentPoints();
+        _ranking.Add(_score); 
+        SortRankingList(_ranking); 
+        int i = 0;
+        foreach (var _s in _ranking) 
+        {
+            if (_s == _score)
+            {
+                PlayerPrefs.SetInt("highlight", i); 
+                break;
+            }
+            ++i;
+        }
+        PlayerPrefsX.SetIntArray("ranking", _ranking.ToArray()); 
+    }
+
 }

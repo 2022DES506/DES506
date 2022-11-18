@@ -55,7 +55,8 @@ public class GameManager : MonoBehaviour
 
     public bool layerChangeLock;
 
-    public LayerState curLayerState;  
+    public LayerState curLayerState;
+
 
     private void OnEnable()
     {
@@ -239,7 +240,10 @@ public class GameManager : MonoBehaviour
 
     public void ShowGameDone()
     {
+        PointsSystem.PS.AddNewRecord(); 
         GameDoneUI.SetActive(true); 
     }
+
+
 
 }

@@ -2482,7 +2482,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 110600289}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.334984, y: 1, z: -10}
+  m_LocalPosition: {x: 5.3352785, y: 1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 942838077}
@@ -56204,7 +56204,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 841245101}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.3349843, y: 0, z: -10}
+  m_LocalPosition: {x: 5.3352766, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1386287013}
@@ -69640,7 +69640,7 @@ PrefabInstance:
     - target: {fileID: 7630032072522543755, guid: 43b784f1308113e4a843ae8974e34aa7, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: a3f8b6e1809ff034cb883423ece9fefa, type: 3}
+      objectReference: {fileID: 21300000, guid: c05e998b6d55da547a8ea3baf4703074, type: 3}
     - target: {fileID: 7630032072522543755, guid: 43b784f1308113e4a843ae8974e34aa7, type: 3}
       propertyPath: m_Color.a
       value: 1
@@ -73387,7 +73387,7 @@ PrefabInstance:
     - target: {fileID: 7630032072522543755, guid: 43b784f1308113e4a843ae8974e34aa7, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: a3f8b6e1809ff034cb883423ece9fefa, type: 3}
+      objectReference: {fileID: 21300000, guid: 4a1bee5fe37840e469a61983b7a321b9, type: 3}
     - target: {fileID: 7630032072522543755, guid: 43b784f1308113e4a843ae8974e34aa7, type: 3}
       propertyPath: m_Color.a
       value: 1
@@ -75169,7 +75169,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: bd01ebf4f65d74b4eb003c960894f6d2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5573dff96544e094ab6c2646e4efd3e6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -75188,7 +75188,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1651189805}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1, y: 1.2669, z: 0}
+  m_LocalPosition: {x: -1, y: 1.23, z: 0}
   m_LocalScale: {x: 2, y: 2.2624195, z: 1}
   m_Children: []
   m_Father: {fileID: 826180045}
@@ -75211,7 +75211,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 3}
+    oldSize: {x: 3.1125, y: 3.125}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -95231,9 +95231,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 95677988}
     - target: {fileID: 92897004215128013, guid: 8086c6ff22145054eb67568c682428b4, type: 3}
+      propertyPath: Door
+      value: 
+      objectReference: {fileID: 1651189805}
+    - target: {fileID: 92897004215128013, guid: 8086c6ff22145054eb67568c682428b4, type: 3}
       propertyPath: jump
       value: 
       objectReference: {fileID: 1910167512}
+    - target: {fileID: 92897004215128013, guid: 8086c6ff22145054eb67568c682428b4, type: 3}
+      propertyPath: Door1
+      value: 
+      objectReference: {fileID: 21300000, guid: 64d4f12608834c14ba9971ccc4ed54c5, type: 3}
+    - target: {fileID: 92897004215128013, guid: 8086c6ff22145054eb67568c682428b4, type: 3}
+      propertyPath: Door2
+      value: 
+      objectReference: {fileID: 21300000, guid: 267c0e4bbb932fb4aa80717e4e5f2cb3, type: 3}
+    - target: {fileID: 92897004215128013, guid: 8086c6ff22145054eb67568c682428b4, type: 3}
+      propertyPath: Door3
+      value: 
+      objectReference: {fileID: 21300000, guid: 51bcaa2a82e95f34c9af61c6a765076b, type: 3}
     - target: {fileID: 92897004215128013, guid: 8086c6ff22145054eb67568c682428b4, type: 3}
       propertyPath: Spike
       value: 
@@ -95432,7 +95448,11 @@ PrefabInstance:
     - target: {fileID: 7630032072522543755, guid: 43b784f1308113e4a843ae8974e34aa7, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: a3f8b6e1809ff034cb883423ece9fefa, type: 3}
+      objectReference: {fileID: 21300000, guid: daa9530a8bd71d547a3abdff395af536, type: 3}
+    - target: {fileID: 7630032072522543755, guid: 43b784f1308113e4a843ae8974e34aa7, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7630032072522543755, guid: 43b784f1308113e4a843ae8974e34aa7, type: 3}
       propertyPath: m_Color.b
       value: 0.9622642

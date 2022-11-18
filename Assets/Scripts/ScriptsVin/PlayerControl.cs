@@ -78,7 +78,11 @@ public class PlayerControl : MonoBehaviour
     [SerializeField]
     private Text pointText;
     [SerializeField]
-    private GameObject popUpText;
+    public GameObject popUpText;
+    [SerializeField]
+    public Sprite Door1, Door2, Door3;
+    [SerializeField]
+    private GameObject Door;
 
     public bool isGround;                      
     private bool jumpHold;                     
@@ -105,6 +109,7 @@ public class PlayerControl : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         gr = GetComponent<GhostRecorder>();
+
 
         pointText.text = "";
 
@@ -603,11 +608,13 @@ public class PlayerControl : MonoBehaviour
             if (GameManager.GM.curLap == 2)
             {
                 anim.SetBool("isTwo", true);
+                Door.GetComponent<SpriteRenderer>().sprite = Door1;
             }
             if (GameManager.GM.curLap == 3)
             {
                 anim.SetBool("isTwo", false);
                 anim.SetBool("isThree", true);
+                Door.GetComponent<SpriteRenderer>().sprite = Door2;
             }
 
             lap.GetComponent<Animator>().SetTrigger("Change");
@@ -620,6 +627,7 @@ public class PlayerControl : MonoBehaviour
             {
                 GameManager.GM.ShowGameDone();
                 SoundManager.SM.PauseBGM();
+                Door.GetComponent<SpriteRenderer>().sprite = Door3;
             }
         }
 

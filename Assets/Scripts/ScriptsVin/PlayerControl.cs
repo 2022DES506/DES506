@@ -78,7 +78,7 @@ public class PlayerControl : MonoBehaviour
     [SerializeField]
     private Text pointText;
     [SerializeField]
-    private GameObject popUpText;
+    public GameObject popUpText;
 
     public bool isGround;                      
     private bool jumpHold;                     

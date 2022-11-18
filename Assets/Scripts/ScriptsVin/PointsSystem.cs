@@ -78,6 +78,8 @@ public class PointsSystem : MonoBehaviour
             ResetCFTimer();
             Debug.Log("Collision Free!");
             player.ShowScoreMessage("Avoided Collision!");
+
+            player.popUpText.GetComponent<Animator>().SetTrigger("Pop Up");
         }
     }
 
@@ -94,6 +96,8 @@ public class PointsSystem : MonoBehaviour
             curSHTimer = SHTimer;
             Debug.Log("Speed Hold!");
             player.ShowScoreMessage("Kept a Constant Speed!");
+
+            player.popUpText.GetComponent<Animator>().SetTrigger("Pop Up");
         }
     }
 
@@ -128,6 +132,8 @@ public class PointsSystem : MonoBehaviour
                 curGFTimer = GFTimer;
                 Debug.Log("Gold Fanatic!");
                 player.ShowScoreMessage("Coin Collector!");
+
+                player.popUpText.GetComponent<Animator>().SetTrigger("Pop Up");
             }
         }
     }

@@ -101,7 +101,11 @@ public class PlayerControl : MonoBehaviour
     private float curJumpStart;              
     private float speedBeforeFly;            
     private float curRingTimer;
-    public bool isSpeedUping; 
+    public bool isSpeedUping;
+
+    [SerializeField] 
+    private float InhValue = 0.00001f;  
+    private float curJumpInhibition; 
 
     private void Start()
     {
@@ -121,7 +125,7 @@ public class PlayerControl : MonoBehaviour
         playerControl = false;
         curKeys = 0;
         isFlying = false;
-        curRingTimer = nextRingCD; 
+        curRingTimer = nextRingCD;
 
         Invoke("StartRun", 3f); 
     }
@@ -359,6 +363,7 @@ public class PlayerControl : MonoBehaviour
         {
             if (isGround && Input.GetButtonDown("Jump"))
             {
+                curJumpInhibition = InhValue; 
                 
                 rb.velocity += Vector2.up * jumpForce; 
                 dustVFX.Play();                                        
@@ -366,6 +371,22 @@ public class PlayerControl : MonoBehaviour
 
                 isJumping = true;
                 curJumpStart = transform.position.y;  
+            }
+            else if (isJumping && rb.velocity.y > curJumpInhibition)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y - curJumpInhibition); 
+                if (curJumpInhibition * 2 < rb.velocity.y)
+                {
+                    curJumpInhibition += curJumpInhibition; 
+                }
+                else if (InhValue < rb.velocity.y)
+                {
+                    curJumpInhibition = InhValue; 
+                }
+                else
+                {
+                    curJumpInhibition = 0f; 
+                }
             }
         }
         jumpHold = Input.GetButton("Jump");           

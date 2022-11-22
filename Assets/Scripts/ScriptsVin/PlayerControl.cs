@@ -338,11 +338,21 @@ public class PlayerControl : MonoBehaviour
     {
         if (isFlying)
         {
-            if (Input.GetButtonDown("Jump"))
+            if (Input.GetButton("Jump"))
             {
-                rb.velocity += Vector2.up * flyForce;     
-                dustVFX.Play();                                        
-                jump.Play();             
+                rb.velocity = new Vector2(rb.velocity.x, flyForce);
+                dustVFX.Play();
+                // jump.Play();             
+            }
+            else if (Input.GetButtonDown("Jump"))
+            {
+                rb.velocity += Vector2.up * flyForce;
+                dustVFX.Play();
+                jump.Play();  
+            }
+            else if (rb.velocity.y > 0)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, 0f); 
             }
         }
         else

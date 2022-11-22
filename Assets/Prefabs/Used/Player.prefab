@@ -4970,7 +4970,7 @@ MonoBehaviour:
   levelHeight: 18
   ghostPrefab: {fileID: 5661829261713328622, guid: 30c9e7343f271164199137f16768e6ab, type: 3}
   ghostPrefab2: {fileID: 5661829261713328622, guid: aa1dd61db55898045b424c14db9f1f10, type: 3}
-  flyForce: 5
+  flyForce: 10
   flySpeed: 300
   hDown: -1
   hRight1: 21
@@ -5023,7 +5023,15 @@ MonoBehaviour:
   Portal: {fileID: 0}
   Spike: {fileID: 0}
   jump: {fileID: 0}
+  pointText: {fileID: 0}
+  popUpText: {fileID: 0}
+  Door1: {fileID: 0}
+  Door2: {fileID: 0}
+  Door3: {fileID: 0}
+  Door: {fileID: 0}
+  isGround: 0
   curKeys: 0
+  isJumping: 0
   isSpeedUping: 0
 --- !u!114 &493455264
 MonoBehaviour:

@@ -5033,7 +5033,7 @@ MonoBehaviour:
   curKeys: 0
   isJumping: 0
   isSpeedUping: 0
-  InhValue: 0.00001
+  InhValue: 1
 --- !u!114 &493455264
 MonoBehaviour:
   m_ObjectHideFlags: 0

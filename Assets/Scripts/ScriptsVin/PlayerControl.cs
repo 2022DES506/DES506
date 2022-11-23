@@ -104,7 +104,7 @@ public class PlayerControl : MonoBehaviour
     public bool isSpeedUping;
 
     [SerializeField] 
-    private float InhValue = 0.00001f;  
+    private float InhValue = 1f;  
     private float curJumpInhibition; 
 
     private void Start()
@@ -363,7 +363,7 @@ public class PlayerControl : MonoBehaviour
         {
             if (isGround && Input.GetButtonDown("Jump"))
             {
-                curJumpInhibition = InhValue; 
+                curJumpInhibition = InhValue * 0.00001f; 
                 
                 rb.velocity += Vector2.up * jumpForce; 
                 dustVFX.Play();                                        
@@ -379,9 +379,9 @@ public class PlayerControl : MonoBehaviour
                 {
                     curJumpInhibition += curJumpInhibition; 
                 }
-                else if (InhValue < rb.velocity.y)
+                else if (InhValue * 0.00001f < rb.velocity.y)
                 {
-                    curJumpInhibition = InhValue; 
+                    curJumpInhibition = InhValue * 0.00001f; 
                 }
                 else
                 {

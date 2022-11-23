@@ -470,6 +470,11 @@ public class PlayerControl : MonoBehaviour
         {
             case 1:
                 
+                if (rb.velocity.y < superJumpForce)
+                {
+                    rb.velocity = Vector2.up * superJumpForce; 
+                }
+
                 float _jumpHeight = transform.position.y - superJumpStart;
                 if (_jumpHeight >= superJumpHeight)
                 {
@@ -558,6 +563,14 @@ public class PlayerControl : MonoBehaviour
     #region  Collision
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.collider.tag == "AirWall")
+        {
+            if (superJumpingState == 1)
+            {
+                rb.velocity = Vector2.up * superJumpForce; 
+            }
+        }
+
         if (collision.collider.tag == "Ground")
         {
             isGround = true;
@@ -575,7 +588,7 @@ public class PlayerControl : MonoBehaviour
         if (collision.collider.tag == "Spring")
         {
             curSpringAni = collision.collider.gameObject.GetComponent<Animator>();
-            SoundManager.SM.PlayTrampoline(); 
+            SoundManager.SM.PlayTrampoline();
             StartSuperJump(); 
         }
 
@@ -753,6 +766,7 @@ public class PlayerControl : MonoBehaviour
 
     private void StartSuperJump()
     {
+
         superJumpingState = 1;
         superJumpStart = transform.position.y;
         rb.velocity = Vector2.up * superJumpForce;

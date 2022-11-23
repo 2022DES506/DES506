@@ -363,29 +363,32 @@ public class PlayerControl : MonoBehaviour
         {
             if (isGround && Input.GetButtonDown("Jump"))
             {
-                curJumpInhibition = InhValue * 0.00001f; 
-                
-                rb.velocity += Vector2.up * jumpForce; 
-                dustVFX.Play();                                        
-                jump.Play();              
+                curJumpInhibition = InhValue * 0.00001f;
+
+                rb.velocity += Vector2.up * jumpForce;
+                dustVFX.Play();
+                jump.Play();
 
                 isJumping = true;
-                curJumpStart = transform.position.y;  
+                curJumpStart = transform.position.y;
             }
-            else if (isJumping && rb.velocity.y > curJumpInhibition)
+            else if (superJumpingState != 1)
             {
-                rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y - curJumpInhibition); 
-                if (curJumpInhibition * 2 < rb.velocity.y)
+                if (isJumping && rb.velocity.y > curJumpInhibition)
                 {
-                    curJumpInhibition += curJumpInhibition; 
-                }
-                else if (InhValue * 0.00001f < rb.velocity.y)
-                {
-                    curJumpInhibition = InhValue * 0.00001f; 
-                }
-                else
-                {
-                    curJumpInhibition = 0f; 
+                    rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y - curJumpInhibition);
+                    if (curJumpInhibition * 2 < rb.velocity.y)
+                    {
+                        curJumpInhibition += curJumpInhibition;
+                    }
+                    else if (InhValue * 0.00001f < rb.velocity.y)
+                    {
+                        curJumpInhibition = InhValue * 0.00001f;
+                    }
+                    else
+                    {
+                        curJumpInhibition = 0f;
+                    }
                 }
             }
         }
@@ -518,7 +521,7 @@ public class PlayerControl : MonoBehaviour
                 }
             }
         }
-        else if (rb.velocity.y > 0 && !jumpHold) 
+        else if (rb.velocity.y > 0 && !jumpHold && superJumpingState != 1)  
         {
             
             rb.velocity += Vector2.up * Physics2D.gravity.y * (jumpAddition - 1) * Time.fixedDeltaTime; 

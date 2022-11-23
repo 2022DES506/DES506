@@ -71,6 +71,10 @@ public class PointsSystem : MonoBehaviour
 
     private void CollisionFree()
     {
+        if (player.GetComponent<Rigidbody2D>().velocity == Vector2 .zero)
+        {
+            ResetCFTimer(); 
+        }
         curCFTimer -= Time.deltaTime; 
         if (curCFTimer < 0)
         {

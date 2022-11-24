@@ -16,8 +16,8 @@ MonoBehaviour:
   - m_From: CM player GR
     m_To: CM player GR SU
     m_Blend:
-      m_Style: 1
-      m_Time: 2
+      m_Style: 2
+      m_Time: 4
       m_CustomCurve:
         serializedVersion: 2
         m_Curve: []
@@ -28,7 +28,7 @@ MonoBehaviour:
     m_To: CM player GL
     m_Blend:
       m_Style: 1
-      m_Time: 2
+      m_Time: 0.5
       m_CustomCurve:
         serializedVersion: 2
         m_Curve: []
@@ -39,7 +39,7 @@ MonoBehaviour:
     m_To: CM player GL SU
     m_Blend:
       m_Style: 1
-      m_Time: 2
+      m_Time: 0.5
       m_CustomCurve:
         serializedVersion: 2
         m_Curve: []
@@ -49,8 +49,8 @@ MonoBehaviour:
   - m_From: CM player GR SU
     m_To: CM player GR
     m_Blend:
-      m_Style: 1
-      m_Time: 2
+      m_Style: 5
+      m_Time: 1
       m_CustomCurve:
         serializedVersion: 2
         m_Curve: []
@@ -61,7 +61,7 @@ MonoBehaviour:
     m_To: CM player GL
     m_Blend:
       m_Style: 1
-      m_Time: 2
+      m_Time: 0.5
       m_CustomCurve:
         serializedVersion: 2
         m_Curve: []
@@ -72,7 +72,7 @@ MonoBehaviour:
     m_To: CM player GL SU
     m_Blend:
       m_Style: 1
-      m_Time: 2
+      m_Time: 0.5
       m_CustomCurve:
         serializedVersion: 2
         m_Curve: []
@@ -83,7 +83,7 @@ MonoBehaviour:
     m_To: CM player GR
     m_Blend:
       m_Style: 1
-      m_Time: 2
+      m_Time: 0.5
       m_CustomCurve:
         serializedVersion: 2
         m_Curve: []
@@ -94,7 +94,7 @@ MonoBehaviour:
     m_To: CM player GR SU
     m_Blend:
       m_Style: 1
-      m_Time: 2
+      m_Time: 0.5
       m_CustomCurve:
         serializedVersion: 2
         m_Curve: []
@@ -104,8 +104,8 @@ MonoBehaviour:
   - m_From: CM player GL
     m_To: CM player GL SU
     m_Blend:
-      m_Style: 1
-      m_Time: 2
+      m_Style: 2
+      m_Time: 4
       m_CustomCurve:
         serializedVersion: 2
         m_Curve: []
@@ -116,7 +116,7 @@ MonoBehaviour:
     m_To: CM player GR
     m_Blend:
       m_Style: 1
-      m_Time: 2
+      m_Time: 0.5
       m_CustomCurve:
         serializedVersion: 2
         m_Curve: []
@@ -127,7 +127,7 @@ MonoBehaviour:
     m_To: CM player GR SU
     m_Blend:
       m_Style: 1
-      m_Time: 2
+      m_Time: 0.5
       m_CustomCurve:
         serializedVersion: 2
         m_Curve: []
@@ -137,8 +137,8 @@ MonoBehaviour:
   - m_From: CM player GL SU
     m_To: CM player GL
     m_Blend:
-      m_Style: 1
-      m_Time: 2
+      m_Style: 5
+      m_Time: 1
       m_CustomCurve:
         serializedVersion: 2
         m_Curve: []

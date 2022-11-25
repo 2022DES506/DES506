@@ -634,6 +634,7 @@ RectTransform:
   - {fileID: 949593354}
   - {fileID: 1920716400}
   - {fileID: 85576800}
+  - {fileID: 1108268253}
   m_Father: {fileID: 1552982597}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2377,7 +2378,7 @@ GameObject:
   - component: {fileID: 1108268255}
   - component: {fileID: 1108268254}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Logo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2390,12 +2391,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1108268252}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1552982597}
-  m_RootOrder: 3
+  m_Father: {fileID: 201054370}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2763,7 +2764,6 @@ RectTransform:
   - {fileID: 201054370}
   - {fileID: 581821705}
   - {fileID: 808715839}
-  - {fileID: 1108268253}
   m_Father: {fileID: 457698590}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

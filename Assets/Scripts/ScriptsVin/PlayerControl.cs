@@ -60,7 +60,7 @@ public class PlayerControl : MonoBehaviour
     [SerializeField]
     private LayerMask BgcLayer;
     [SerializeField]
-    private GameObject airPlane1, airPlane2, airPlane3;
+    public GameObject airPlane1, airPlane2, airPlane3;
     [SerializeField]
     private GameObject RingPrefab;  
     [SerializeField]
@@ -684,6 +684,10 @@ public class PlayerControl : MonoBehaviour
             isFlying = !isFlying; 
             if (isFlying)
             {
+                airPlane1.SetActive(false);
+                airPlane2.SetActive(false);
+                airPlane3.SetActive(false);
+
                 blackBG.SetActive(true); 
 
                 speedBeforeFly = curSpeed;
@@ -746,6 +750,11 @@ public class PlayerControl : MonoBehaviour
             
         }
 
+        if (collision.tag == "CloseShip")
+        {
+            collision.GetComponent<Animator>().SetBool("isMove", true);
+        }
+
     }
    
     private void OnTriggerExit2D(Collider2D collision)
@@ -760,7 +769,7 @@ public class PlayerControl : MonoBehaviour
         if (collision.tag == "SlopeEnd")
         {
             rb.velocity = new Vector2(rb.velocity.x, 0f); 
-        }
+        } 
     }
     #endregion
 
@@ -792,6 +801,11 @@ public class PlayerControl : MonoBehaviour
     private void HideScoreMessage()
     {
         pointText.enabled = false; 
+    }
+
+    public void HideMe()
+    {
+        sr.enabled = false; 
     }
 
 }

@@ -10,43 +10,36 @@ public class PlayerAnimCtrl : MonoBehaviour
 {
     private PlayerControl player; 
     private Animator anim;
+    private bool isGroundBef; 
 
     private void Start()
     {
         player = GetComponent<PlayerControl>(); 
-        anim = GetComponent<Animator>(); 
+        anim = GetComponent<Animator>();
+        isGroundBef = player.isGround; 
     }
 
     private void Update()
     {
-        CheckJumping();
-        CheckGround(); 
+        JumpCheck(); 
     }
 
-    public void End2Idle()
+    private void JumpCheck()
     {
-        anim.SetBool("isIdle", true); 
-        anim.SetBool("isDown", false);
-    }
-
-    private void CheckGround()
-    {
-        if (!anim.GetBool("isJumping") && !anim.GetBool("isDown") && !anim.GetBool("isIdle") && player.isGround)
+        if (player.isGround != isGroundBef)
         {
-            anim.SetBool("isDown", true); 
+            SetJumpTrue();
+            isGroundBef = player.isGround; 
         }
     }
 
-    private void CheckJumping()
+    public void SetJumpTrue()
     {
-        if (!anim.GetBool("isJumping") && player.isJumping)
-        {
-            anim.SetBool("isJumping", true);
-            anim.SetBool("isIdle", false); 
-        }
-        if (anim.GetBool("isJumping") && !player.isJumping)
-        {
-            anim.SetBool("isJumping", false); 
-        }
+        anim.SetBool("isJumpp", true); 
+    }
+
+    public void SetJumpFalse()
+    {
+        anim.SetBool("isJumpp", false); 
     }
 }

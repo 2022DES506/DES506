@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     public float curTimer;
 
     [SerializeField]
-    private GameObject GameDoneUI;
+    private GameObject GameDoneUI, MainUI; 
 
     [SerializeField]
     private GameObject CD3, CD2, CD1, CDGo;
@@ -69,6 +69,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        MainUI.SetActive(true); 
+
         curLap = 0; 
         curLevel = 0;
         curCoins = 0;
@@ -241,7 +243,8 @@ public class GameManager : MonoBehaviour
     public void ShowGameDone()
     {
         PointsSystem.PS.AddNewRecord(); 
-        GameDoneUI.SetActive(true); 
+        GameDoneUI.SetActive(true);
+        MainUI.SetActive(false); 
     }
 
 

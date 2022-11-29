@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: GlowMaterial
-  m_Shader: {fileID: -6465566751694194690, guid: b10e05e01aad7ca46b050c481bcda667, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: e22c00de986ec0c4ab8bca3776db32f0, type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA _EMISSION
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
@@ -136,7 +136,7 @@ Material:
     m_Colors:
     - Color_84401ca748614abbbd6f654bbbc25460: {r: 23.968628, g: 9.411765, b: 0, a: 0.78431374}
     - _BaseColor: {r: 1, g: 0.7254902, b: 0, a: 1}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 12271.9375, g: 3148.298, b: 0, a: 0.8666667}
     - _EmissionColor: {r: 32, g: 23.215687, b: 0, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}

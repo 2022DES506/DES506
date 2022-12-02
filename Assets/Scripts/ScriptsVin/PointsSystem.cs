@@ -27,7 +27,10 @@ public class PointsSystem : MonoBehaviour
     public float curGFCoins;
     private float curCFTimer;
 
-    private PlayerControl player; 
+    private PlayerControl player;
+
+    [SerializeField]
+    private Color colorLap1, colorLap2, colorLap3;  
 
     private void OnEnable()
     {
@@ -56,7 +59,26 @@ public class PointsSystem : MonoBehaviour
         SpeedHold();
         GoldFanatic(); 
         pointsNum.text = curPoints.ToString();
-        CollisionFree(); 
+        CollisionFree();
+        ColorChange(); 
+    }
+
+    private void ColorChange()
+    {
+        switch (GameManager.GM.curLap)
+        {
+            case 1:
+                pointsNum.color = colorLap1; 
+                break;
+            case 2:
+                pointsNum.color = colorLap2; 
+                break;
+            case 3:
+                pointsNum.color = colorLap3; 
+                break; 
+            default:
+                break; 
+        }
     }
 
     public void AddPoints(int _num)

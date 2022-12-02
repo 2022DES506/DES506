@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class KeyBar : MonoBehaviour
 {
     public Slider slider;
+    public Gradient gradient;
+    public Image fill; 
 
     private void Start()
     {
@@ -23,7 +25,8 @@ public class KeyBar : MonoBehaviour
 
     public void SetValue(float _value)
     {
-        slider.value = _value; 
+        slider.value = _value;
+        fill.color = gradient.Evaluate(slider.normalizedValue); 
     }
 
 }
